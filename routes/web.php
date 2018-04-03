@@ -12,10 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('voyager.login');
 });
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    // Route::get('portarias', function(){
+    //     $portarias = \App\Portaria::all();
+
+    //     return $portarias;
+    // });
 });

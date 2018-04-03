@@ -27,7 +27,7 @@ class Pessoas extends AbstractWidget
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-group',
-            'title'  => "{$count} Servidores cadastrados",
+            'title'  => "{$count} pessoas cadastrados",
             'text'   => __('voyager.dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
                 'text' => 'Ver todos os servidores',
