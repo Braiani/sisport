@@ -20,9 +20,4 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::post('/login', 'LoginController@postLogin')->name('voyager.login');
-    // Route::get('portarias', function(){
-    //     $portarias = \App\Portaria::all();
-
-    //     return $portarias;
-    // });
 });

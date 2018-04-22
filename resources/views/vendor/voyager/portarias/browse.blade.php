@@ -22,6 +22,11 @@
             </a>
         @endif
         @endcan
+        {{-- @can('add',app($dataType->model_name))
+            <a href="{{ route('portarias.download') }}" class="btn btn-info btn-add-new">
+                <i class="voyager-download"></i> <span>{{ __('sisport.download') }}</span>
+            </a>
+        @endcan --}}
         @include('voyager::multilingual.language-selector')
     </div>
 @stop
@@ -244,12 +249,24 @@
 @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
 <link rel="stylesheet" href="{{ voyager_asset('lib/css/responsive.dataTables.min.css') }}">
 @endif
+@if (!$dataType->server_side)
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css"> --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap4.min.css">
+@endif
 @stop
 
 @section('javascript')
     <!-- DataTables -->
     @if(!$dataType->server_side && config('dashboard.data_tables.responsive'))
         <script src="{{ voyager_asset('lib/js/dataTables.responsive.min.js') }}"></script>
+    @endif
+    @if (!$dataType->server_side)
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
     @endif
     <script>
         $(document).ready(function () {
@@ -259,6 +276,8 @@
                         "order" => [],
                         "language" => __('voyager::datatable'),
                         "columnDefs" => [['searchable' =>  false, 'targets' => -1 ]],
+                        "buttons" => ['csv', 'excel', 'print'],
+                        "dom" => '<l<"text-center"B>fr<t>ip>'
                     ],
                     config('voyager.dashboard.data_tables', []))
                 , true) !!});
