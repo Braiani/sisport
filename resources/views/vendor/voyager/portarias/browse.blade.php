@@ -268,6 +268,19 @@
         <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
     @endif
+    //DataTable Permission of Export Datas
+    @php
+        $buttons[] = '';
+    @endphp
+
+    @can('add',app($dataType->model_name))
+        @php
+            $buttons = [    
+                "buttons" => ['csv', 'excel', 'print'],
+                "dom" => '<l<"text-center"B>fr<t>ip>'
+                ];
+        @endphp
+    @endcan
     <script>
         $(document).ready(function () {
             @if (!$dataType->server_side)
@@ -275,10 +288,8 @@
                     array_merge([
                         "order" => [],
                         "language" => __('voyager::datatable'),
-                        "columnDefs" => [['searchable' =>  false, 'targets' => -1 ]],
-                        "buttons" => ['csv', 'excel', 'print'],
-                        "dom" => '<l<"text-center"B>fr<t>ip>'
-                    ],
+                        "columnDefs" => [['searchable' =>  false, 'targets' => -1 ]]
+                    ], $buttons,
                     config('voyager.dashboard.data_tables', []))
                 , true) !!});
             @else
