@@ -1270,7 +1270,7 @@ class DataRowsTableSeeder extends Seeder
                 'id' => 80,
                 'data_type_id' => 11,
                 'field' => 'status_id',
-                'type' => 'checkbox',
+                'type' => 'number',
                 'display_name' => 'Status Id',
                 'required' => 1,
                 'browse' => 1,
