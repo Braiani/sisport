@@ -23,14 +23,21 @@ class Pessoas extends AbstractWidget
     public function run()
     {
         $count = Pessoa::count();
-        $string = trans_choice('voyager.dimmer.user', $count);
+
+        if ($count <= 1) {
+            $titulo = __('sisport.widgets.pessoas.titulo-singular');
+            $texto = trans_choice('sisport.widgets.pessoas.texto-singular', $count);
+        }else{
+            $titulo = __('sisport.widgets.pessoas.titulo-plural');
+            $texto = trans_choice('sisport.widgets.pessoas.texto-plural', $count);
+        }
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-group',
-            'title'  => "{$count} pessoas cadastrados",
-            'text'   => __('voyager.dimmer.user_text', ['count' => $count, 'string' => Str::lower($string)]),
+            'title'  => "{$count} {$titulo}",
+            'text'   => $texto,
             'button' => [
-                'text' => 'Ver todos os servidores',
+                'text' => 'Ver todos as pessoas',
                 'link' => route('voyager.pessoas.index'),
             ],
             'image' => 'pessoas.jpg',

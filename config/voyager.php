@@ -162,9 +162,7 @@ return [
         'widgets' => [
             'App\\Widgets\\Pessoas',
             'App\\Widgets\\Portarias',
-            // 'TCG\\Voyager\\Widgets\\UserDimmer',
-            // 'TCG\\Voyager\\Widgets\\PostDimmer',
-            // 'TCG\\Voyager\\Widgets\\PageDimmer',
+            'App\\Widgets\\MinhasPortarias',
         ],
 
     ],

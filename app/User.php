@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -26,4 +27,14 @@ class User extends \TCG\Voyager\Models\User
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        return Auth::user()->role_id === 1;
+    }
+
+    public function isDirge()
+    {
+        return Auth::user()->role_id === 2;
+    }
 }

@@ -23,12 +23,19 @@ class Portarias extends AbstractWidget
     public function run()
     {
         $count = Portaria::count();
-        $string = trans_choice('voyager.dimmer.post', $count);
+
+        if ($count <= 1) {
+            $titulo = __('sisport.widgets.portarias.titulo-singular');
+            $texto = trans_choice('sisport.widgets.portarias.texto-singular', $count);
+        }else{
+            $titulo = __('sisport.widgets.portarias.titulo-plural');
+            $texto = trans_choice('sisport.widgets.portarias.texto-plural', $count);
+        }
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-news',
-            'title'  => "{$count} Portarias cadastradas",
-            'text'   => "Existem {$count} portarias cadastradas. Clique no botão abaixo para visualizar todas.",
+            'title'  => "{$count} {$titulo}",
+            'text'   => $texto,
             'button' => [
                 'text' => 'Visualizar todas as portarias',
                 'link' => route('voyager.portarias.index'),
