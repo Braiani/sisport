@@ -30,11 +30,11 @@ class User extends \TCG\Voyager\Models\User
 
     public function isAdmin()
     {
-        return Auth::user()->role_id === 1;
+        return $this->role->name === 'Administrador';
     }
 
     public function isDirge()
     {
-        return Auth::user()->role_id === 3;
+        return $this->role->name === 'DIRGE';
     }
 }
