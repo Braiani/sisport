@@ -35,6 +35,6 @@ class User extends \TCG\Voyager\Models\User
 
     public function isDirge()
     {
-        return Auth::user()->role_id === 2;
+        return Auth::user()->role_id === 3;
     }
 }
