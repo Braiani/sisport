@@ -20,7 +20,6 @@ class CreatePessoasTable extends Migration {
 			$table->string('cpf')->nullable()->unique();
 			$table->integer('coordenacoes_id')->unsigned()->nullable();
 			$table->timestamps();
-			$table->integer('pessoa_coordenacao')->nullable();
 		});
 	}
 

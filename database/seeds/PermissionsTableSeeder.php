@@ -577,6 +577,14 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => '2018-02-27 02:42:48',
                 'updated_at' => '2018-02-27 02:42:48',
             ),
+            70 => 
+            array (
+                'id' => 71,
+                'key' => 'browse_bread',
+                'table_name' => NULL,
+                'created_at' => '2018-02-27 02:42:48',
+                'updated_at' => '2018-02-27 02:42:48',
+            ),
         ));
         
         

@@ -43,4 +43,9 @@ class Pessoas extends AbstractWidget
             'image' => 'pessoas.jpg',
         ]));
     }
+
+    public function shouldBeDisplayed()
+    {
+        return true;
+    }
 }

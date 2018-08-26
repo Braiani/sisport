@@ -43,4 +43,9 @@ class Portarias extends AbstractWidget
             'image' => voyager_asset('images/widget-backgrounds/02.jpg'),
         ]));
     }
+
+    public function shouldBeDisplayed()
+    {
+        return true;
+    }
 }

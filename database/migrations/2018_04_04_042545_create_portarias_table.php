@@ -24,10 +24,8 @@ class CreatePortariasTable extends Migration {
 			$table->integer('status_id')->unsigned()->index();
 			$table->date('prev_renovacao')->nullable();
 			$table->string('revoga_port')->nullable();
-			$table->text('observacao', 65535)->nullable();
+			$table->text('observacao')->nullable();
 			$table->timestamps();
-			$table->string('portaria_descricao')->nullable();
-			$table->string('portaria_membro')->nullable();
 		});
 	}
 

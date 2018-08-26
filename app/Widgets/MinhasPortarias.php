@@ -51,4 +51,9 @@ class MinhasPortarias extends AbstractWidget
             'image' => 'Minhas Portarias.jpg',
         ]));
     }
+
+    public function shouldBeDisplayed()
+    {
+        return true;
+    }
 }

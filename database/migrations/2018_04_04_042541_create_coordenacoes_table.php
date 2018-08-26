@@ -15,7 +15,7 @@ class CreateCoordenacoesTable extends Migration {
 		Schema::create('coordenacoes', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->text('nome', 65535);
+			$table->text('nome');
 			$table->string('sigla', 10);
 			$table->timestamps();
 			$table->string('sigla_coordenacao')->nullable();
