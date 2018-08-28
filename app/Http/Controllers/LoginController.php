@@ -9,54 +9,62 @@ use App\Pessoa;
 
 class LoginController extends VoyagerAuthController
 {
-    protected $userHasEmail;
+    protected $userHasEmail = false;
 
-    public function __contstruct()
-    {
-        $this->userhasEmail = false;
-    }
 
     public function postLogin(Request $request)
     {
-        $this->userhasEmail = User::where('email', $request->email)->count() > 0;
+        if (strpos($request->email, '@') !== false) {
+            $this->userHasEmail = true;
+        }
+        
 
-        if ($this->userhasEmail) {
+        if ($this->userHasEmail) {
             
             return parent::postLogin($request);
 
         }else{
             $siape = $request->email;
-            if ($siape !== $request->password) {
+            $request->merge(['siape' => $siape]);
+
+
+            if ($this->primeiroLogin($siape) and $siape !== $request->password) {
                 return $this->sendFailedLoginResponse($request);
             }
 
-            $servidor = Pessoa::where('siape', $siape)->count() > 0;
+            if ($this->primeiroLogin($siape)) {
+                $servidor = Pessoa::where('siape', $siape)->count() > 0;
 
-            if ($servidor) {
+                if ($servidor) {
 
-                if (User::where('siape', $siape)->count() > 0) {
-                    $request->merge(['siape' => $siape]);
+                    if (User::where('siape', $siape)->count() > 0) {
+                        return parent::postLogin($request);
+                    }
+
+                    $servidor = Pessoa::where('siape', $siape)->first();
+                    User::create([
+                        'name' => $servidor->nome,
+                        'password' => bcrypt($servidor->siape),
+                        'siape' => $siape,
+                        'email' => $servidor->email
+                    ]);
+
                     return parent::postLogin($request);
                 }
-
-                $servidor = Pessoa::where('siape', $siape)->first();
-                User::create([
-                    'name' => $servidor->nome,
-                    'password' => bcrypt($servidor->siape),
-                    'siape' => $siape
-                ]);
-
-                $request->merge(['siape' => $siape]);
-
-                return parent::postLogin($request);
             }
+
+            return parent::postLogin($request);
             
-            return $this->sendFailedLoginResponse($request);
         }
     }
 
     public function username()
     {
-        return $this->userhasEmail ? 'email' : 'siape';
+        return $this->userHasEmail ? 'email' : 'siape';
+    }
+
+    public function primeiroLogin($siape)
+    {
+        return User::where('siape', $siape)->count() == 0;
     }
 }
