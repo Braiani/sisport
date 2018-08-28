@@ -24,6 +24,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => NULL,
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             1 => 
             array (
@@ -32,6 +33,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => NULL,
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             2 => 
             array (
@@ -40,6 +42,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => NULL,
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             3 => 
             array (
@@ -48,6 +51,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => NULL,
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             4 => 
             array (
@@ -56,6 +60,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'menus',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             5 => 
             array (
@@ -64,6 +69,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'menus',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             6 => 
             array (
@@ -72,6 +78,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'menus',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             7 => 
             array (
@@ -80,6 +87,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'menus',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             8 => 
             array (
@@ -88,6 +96,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'menus',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             9 => 
             array (
@@ -96,6 +105,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pages',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             10 => 
             array (
@@ -104,6 +114,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pages',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             11 => 
             array (
@@ -112,6 +123,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pages',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             12 => 
             array (
@@ -120,6 +132,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pages',
                 'created_at' => '2018-02-24 20:08:10',
                 'updated_at' => '2018-02-24 20:08:10',
+                'permission_group_id' => NULL,
             ),
             13 => 
             array (
@@ -128,6 +141,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pages',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             14 => 
             array (
@@ -136,6 +150,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'roles',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             15 => 
             array (
@@ -144,6 +159,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'roles',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             16 => 
             array (
@@ -152,6 +168,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'roles',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             17 => 
             array (
@@ -160,6 +177,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'roles',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             18 => 
             array (
@@ -168,6 +186,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'roles',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             19 => 
             array (
@@ -176,6 +195,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'users',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             20 => 
             array (
@@ -184,6 +204,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'users',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             21 => 
             array (
@@ -192,6 +213,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'users',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             22 => 
             array (
@@ -200,6 +222,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'users',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             23 => 
             array (
@@ -208,6 +231,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'users',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             24 => 
             array (
@@ -216,6 +240,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'posts',
                 'created_at' => '2018-02-24 20:08:11',
                 'updated_at' => '2018-02-24 20:08:11',
+                'permission_group_id' => NULL,
             ),
             25 => 
             array (
@@ -224,6 +249,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'posts',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             26 => 
             array (
@@ -232,6 +258,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'posts',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             27 => 
             array (
@@ -240,6 +267,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'posts',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             28 => 
             array (
@@ -248,6 +276,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'posts',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             29 => 
             array (
@@ -256,6 +285,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'categories',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             30 => 
             array (
@@ -264,6 +294,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'categories',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             31 => 
             array (
@@ -272,6 +303,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'categories',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             32 => 
             array (
@@ -280,6 +312,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'categories',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             33 => 
             array (
@@ -288,6 +321,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'categories',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             34 => 
             array (
@@ -296,6 +330,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'settings',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             35 => 
             array (
@@ -304,6 +339,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'settings',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             36 => 
             array (
@@ -312,6 +348,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'settings',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             37 => 
             array (
@@ -320,6 +357,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'settings',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             38 => 
             array (
@@ -328,6 +366,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'settings',
                 'created_at' => '2018-02-24 20:08:12',
                 'updated_at' => '2018-02-24 20:08:12',
+                'permission_group_id' => NULL,
             ),
             39 => 
             array (
@@ -336,6 +375,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => NULL,
                 'created_at' => '2018-02-24 20:08:14',
                 'updated_at' => '2018-02-24 20:08:14',
+                'permission_group_id' => NULL,
             ),
             40 => 
             array (
@@ -344,6 +384,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'periodicidades',
                 'created_at' => '2018-02-24 20:34:21',
                 'updated_at' => '2018-02-24 20:34:21',
+                'permission_group_id' => NULL,
             ),
             41 => 
             array (
@@ -352,6 +393,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'periodicidades',
                 'created_at' => '2018-02-24 20:34:21',
                 'updated_at' => '2018-02-24 20:34:21',
+                'permission_group_id' => NULL,
             ),
             42 => 
             array (
@@ -360,6 +402,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'periodicidades',
                 'created_at' => '2018-02-24 20:34:21',
                 'updated_at' => '2018-02-24 20:34:21',
+                'permission_group_id' => NULL,
             ),
             43 => 
             array (
@@ -368,6 +411,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'periodicidades',
                 'created_at' => '2018-02-24 20:34:21',
                 'updated_at' => '2018-02-24 20:34:21',
+                'permission_group_id' => NULL,
             ),
             44 => 
             array (
@@ -376,6 +420,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'periodicidades',
                 'created_at' => '2018-02-24 20:34:21',
                 'updated_at' => '2018-02-24 20:34:21',
+                'permission_group_id' => NULL,
             ),
             45 => 
             array (
@@ -384,6 +429,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'status',
                 'created_at' => '2018-02-24 20:35:46',
                 'updated_at' => '2018-02-24 20:35:46',
+                'permission_group_id' => NULL,
             ),
             46 => 
             array (
@@ -392,6 +438,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'status',
                 'created_at' => '2018-02-24 20:35:46',
                 'updated_at' => '2018-02-24 20:35:46',
+                'permission_group_id' => NULL,
             ),
             47 => 
             array (
@@ -400,6 +447,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'status',
                 'created_at' => '2018-02-24 20:35:46',
                 'updated_at' => '2018-02-24 20:35:46',
+                'permission_group_id' => NULL,
             ),
             48 => 
             array (
@@ -408,6 +456,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'status',
                 'created_at' => '2018-02-24 20:35:46',
                 'updated_at' => '2018-02-24 20:35:46',
+                'permission_group_id' => NULL,
             ),
             49 => 
             array (
@@ -416,6 +465,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'status',
                 'created_at' => '2018-02-24 20:35:46',
                 'updated_at' => '2018-02-24 20:35:46',
+                'permission_group_id' => NULL,
             ),
             50 => 
             array (
@@ -424,6 +474,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'coordenacoes',
                 'created_at' => '2018-02-24 20:37:18',
                 'updated_at' => '2018-02-24 20:37:18',
+                'permission_group_id' => NULL,
             ),
             51 => 
             array (
@@ -432,6 +483,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'coordenacoes',
                 'created_at' => '2018-02-24 20:37:18',
                 'updated_at' => '2018-02-24 20:37:18',
+                'permission_group_id' => NULL,
             ),
             52 => 
             array (
@@ -440,6 +492,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'coordenacoes',
                 'created_at' => '2018-02-24 20:37:18',
                 'updated_at' => '2018-02-24 20:37:18',
+                'permission_group_id' => NULL,
             ),
             53 => 
             array (
@@ -448,6 +501,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'coordenacoes',
                 'created_at' => '2018-02-24 20:37:18',
                 'updated_at' => '2018-02-24 20:37:18',
+                'permission_group_id' => NULL,
             ),
             54 => 
             array (
@@ -456,6 +510,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'coordenacoes',
                 'created_at' => '2018-02-24 20:37:18',
                 'updated_at' => '2018-02-24 20:37:18',
+                'permission_group_id' => NULL,
             ),
             55 => 
             array (
@@ -464,6 +519,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas',
                 'created_at' => '2018-02-24 21:01:34',
                 'updated_at' => '2018-02-24 21:01:34',
+                'permission_group_id' => NULL,
             ),
             56 => 
             array (
@@ -472,6 +528,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas',
                 'created_at' => '2018-02-24 21:01:34',
                 'updated_at' => '2018-02-24 21:01:34',
+                'permission_group_id' => NULL,
             ),
             57 => 
             array (
@@ -480,6 +537,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas',
                 'created_at' => '2018-02-24 21:01:34',
                 'updated_at' => '2018-02-24 21:01:34',
+                'permission_group_id' => NULL,
             ),
             58 => 
             array (
@@ -488,6 +546,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas',
                 'created_at' => '2018-02-24 21:01:34',
                 'updated_at' => '2018-02-24 21:01:34',
+                'permission_group_id' => NULL,
             ),
             59 => 
             array (
@@ -496,6 +555,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas',
                 'created_at' => '2018-02-24 21:01:34',
                 'updated_at' => '2018-02-24 21:01:34',
+                'permission_group_id' => NULL,
             ),
             60 => 
             array (
@@ -504,6 +564,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'portarias',
                 'created_at' => '2018-02-24 21:15:38',
                 'updated_at' => '2018-02-24 21:15:38',
+                'permission_group_id' => NULL,
             ),
             61 => 
             array (
@@ -512,6 +573,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'portarias',
                 'created_at' => '2018-02-24 21:15:38',
                 'updated_at' => '2018-02-24 21:15:38',
+                'permission_group_id' => NULL,
             ),
             62 => 
             array (
@@ -520,6 +582,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'portarias',
                 'created_at' => '2018-02-24 21:15:38',
                 'updated_at' => '2018-02-24 21:15:38',
+                'permission_group_id' => NULL,
             ),
             63 => 
             array (
@@ -528,6 +591,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'portarias',
                 'created_at' => '2018-02-24 21:15:38',
                 'updated_at' => '2018-02-24 21:15:38',
+                'permission_group_id' => NULL,
             ),
             64 => 
             array (
@@ -536,6 +600,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'portarias',
                 'created_at' => '2018-02-24 21:15:38',
                 'updated_at' => '2018-02-24 21:15:38',
+                'permission_group_id' => NULL,
             ),
             65 => 
             array (
@@ -544,6 +609,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas_portarias',
                 'created_at' => '2018-02-27 02:42:48',
                 'updated_at' => '2018-02-27 02:42:48',
+                'permission_group_id' => NULL,
             ),
             66 => 
             array (
@@ -552,6 +618,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas_portarias',
                 'created_at' => '2018-02-27 02:42:48',
                 'updated_at' => '2018-02-27 02:42:48',
+                'permission_group_id' => NULL,
             ),
             67 => 
             array (
@@ -560,6 +627,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas_portarias',
                 'created_at' => '2018-02-27 02:42:48',
                 'updated_at' => '2018-02-27 02:42:48',
+                'permission_group_id' => NULL,
             ),
             68 => 
             array (
@@ -568,6 +636,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas_portarias',
                 'created_at' => '2018-02-27 02:42:48',
                 'updated_at' => '2018-02-27 02:42:48',
+                'permission_group_id' => NULL,
             ),
             69 => 
             array (
@@ -576,6 +645,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => 'pessoas_portarias',
                 'created_at' => '2018-02-27 02:42:48',
                 'updated_at' => '2018-02-27 02:42:48',
+                'permission_group_id' => NULL,
             ),
             70 => 
             array (
@@ -584,6 +654,7 @@ class PermissionsTableSeeder extends Seeder
                 'table_name' => NULL,
                 'created_at' => '2018-02-27 02:42:48',
                 'updated_at' => '2018-02-27 02:42:48',
+                'permission_group_id' => NULL,
             ),
         ));
         
