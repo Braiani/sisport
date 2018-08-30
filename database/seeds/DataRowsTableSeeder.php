@@ -1489,6 +1489,22 @@ class DataRowsTableSeeder extends Seeder
                 'details' => NULL,
                 'order' => 5,
             ),
+            92 => 
+            array (
+                'id' => 103,
+                'data_type_id' => 3,
+                'field' => 'user_belongstomany_role_relationship',
+                'type' => 'relationship',
+                'display_name' => 'Roles',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1"}',
+                'order' => 11,
+            ),
         ));
         
         
