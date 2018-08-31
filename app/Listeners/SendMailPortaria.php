@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Portaria;
+use Illuminate\Support\Facades\Storage;
 
 class SendMailPortaria
 {
@@ -38,10 +39,17 @@ class SendMailPortaria
                 array_push($destinatarios, $destinatario->email);
             }
 
-            Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use($destinatarios, $assunto){
+            Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use($destinatarios, $assunto, $portaria){
                 $message->from('portaria.cg@ifms.edu.br', 'Portaria CG');
                 $message->to($destinatarios);
                 $message->subject($assunto);
+                if ($portaria->arquivo !== null) {
+                    foreach (json_decode($portaria->arquivo) as $file) {
+                        $message->attach(Storage::disk(config('voyager.storage.disk'))->url($file->download_link), [
+                            'as' => $file->original_name
+                        ]);
+                    }
+                }
             });
         }
     }
