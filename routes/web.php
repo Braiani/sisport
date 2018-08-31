@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'checPass'], function () {
     Voyager::routes();
     Route::post('/login', 'LoginController@postLogin')->name('voyager.login');
 });

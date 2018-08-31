@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'TCG\Voyager\Events\BreadDataAdded' => [
             'App\Listeners\SendMailPortaria',
         ],
+        'TCG\Voyager\Events\BreadDataChanged' => [
+            'App\Listeners\AlterPassUser',
+        ],
     ];
 
     /**
