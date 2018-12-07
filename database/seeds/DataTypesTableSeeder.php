@@ -63,13 +63,13 @@ class DataTypesTableSeeder extends Seeder
                 'icon' => 'voyager-person',
                 'model_name' => 'TCG\\Voyager\\Models\\User',
                 'policy_name' => 'TCG\\Voyager\\Policies\\UserPolicy',
-                'controller' => '',
-                'description' => '',
+                'controller' => 'UserTempController',
+                'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
-                'details' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null}',
                 'created_at' => '2018-02-24 20:08:07',
-                'updated_at' => '2018-02-24 20:08:07',
+                'updated_at' => '2018-08-30 02:13:12',
             ),
             3 => 
             array (
@@ -192,10 +192,10 @@ class DataTypesTableSeeder extends Seeder
                 'controller' => NULL,
                 'description' => NULL,
                 'generate_permissions' => 1,
-                'server_side' => 0,
+                'server_side' => 1,
                 'details' => '{"order_column":null,"order_display_column":null}',
                 'created_at' => '2018-02-24 21:01:34',
-                'updated_at' => '2018-04-03 03:26:12',
+                'updated_at' => '2018-12-07 02:22:57',
             ),
             10 => 
             array (
@@ -213,7 +213,7 @@ class DataTypesTableSeeder extends Seeder
                 'server_side' => 0,
                 'details' => '{"order_column":null,"order_display_column":null}',
                 'created_at' => '2018-02-24 21:15:38',
-                'updated_at' => '2018-04-03 01:18:43',
+                'updated_at' => '2018-12-07 11:55:59',
             ),
             11 => 
             array (
