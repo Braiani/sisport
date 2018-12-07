@@ -33,13 +33,13 @@
 
                 <div class="card" style="padding-bottom:5px;">
                     <!-- form start -->
-                    @foreach($dataType->readRows as $row)
-                        @php $rowDetails = json_decode($row->details);
+					@foreach($dataType->readRows as $row)
+                        @php $rowDetails = $row->details;
                          if($rowDetails === null){
                                 $rowDetails=new stdClass();
                                 $rowDetails->options=new stdClass();
                          }
-                            $options = json_decode($row->details);
+                            $options = $row->details;
                             $display_options = isset($options->display) ? $options->display : NULL;
                         @endphp
                         <div class="col-md-@if(isset($display_options->width)){{ $display_options->width }}@else{{ '12' }}@endif">
