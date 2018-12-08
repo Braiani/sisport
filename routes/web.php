@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'checPass'], function () {
+    Route::get('/portarias/getData', 'PortariasController@get_data')->middleware('admin.user')->name('voyager.portarias.getData');
     Voyager::routes();
     Route::post('/login', 'LoginController@postLogin')->name('voyager.login');
 });

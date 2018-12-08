@@ -146,7 +146,7 @@
                     @else
                         <ul>
 							@foreach($selected_values as $selected_value)
-                                <li>{{ $selected_value }}</li>
+                                <p><i class="voyager-person"></i> {{ $selected_value }}</p>
                             @endforeach
                         </ul>
                     @endif

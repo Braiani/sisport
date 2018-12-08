@@ -14,6 +14,11 @@ class Portaria extends Model
     {
         return $this->belongsToMany(Pessoa::class, 'pessoas_portarias');
     }
+    
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
 
     public function getPortariaDescricaoAttribute()
     {
@@ -28,5 +33,4 @@ class Portaria extends Model
         }
         return $resultado;
     }
-    
 }
