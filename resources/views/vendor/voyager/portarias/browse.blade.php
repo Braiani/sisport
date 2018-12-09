@@ -66,7 +66,7 @@
 											data-sortable="true"
 											>Port. nº</th>
 										<th data-field="descricao"
-											data-sortable="false"
+											data-sortable="true"
 											>Descrição</th>
 										<th data-field="data_emissao"
 											data-align="center"

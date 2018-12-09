@@ -23,9 +23,22 @@ class PortariasController extends Controller
         if ($search) {
             $query = $query->where('descricao', 'LIKE', "%{$search}%")
                     ->orWhere('port_num', 'LIKE', "%{$search}%")
+                    ->orWhere('publicacao', 'LIKE', "%{$search}%")
                     ->orWhereIn('status_id', function ($query) use ($search) {
                         $query->select('id')->from('status')->where('descricao', 'LIKE', "%{$search}%");
+                    })->orWhereHas('pessoas', function ($query) use ($search) {
+                        $query->where('nome', 'LIKE', "%{$search}%")
+                                ->orWhereIn('coordenacoes_id', function ($q) use ($search) {
+                                    $q->select('id')->from('coordenacoes')
+                                        ->orWhere('sigla', 'LIKE', "%{$search}%")
+                                        ->orWhere('nome', 'LIKE', "%{$search}%");
+                                });
                     });
+        }
+        if ($this->verificaData($search)) {
+            $data = $this->dateBR($search);
+            $query = $query->orWhere('data_emissao', $data)
+                    ->orWhere('vencimento', $data);
         }
         if ($sort) {
             $query = $query->orderBy($sort, $request->get('order'));
@@ -41,5 +54,16 @@ class PortariasController extends Controller
             'rows' => $portaria,
         );
         return $resposta;
+    }
+
+    public function verificaData($value)
+    {
+        return preg_match('/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/', $value);
+    }
+    
+    public function dateBR($value)
+    {
+        $data = str_replace("/", "-", $value);
+        return date('Y-m-d', strtotime($data));
     }
 }
