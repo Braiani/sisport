@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ voyager_asset('css/app.css') }}">
     <style>
         body {
-            background-image:url('{{ Voyager::image( Voyager::setting("admin.bg_image"), voyager_asset("images/bg.jpg") ) }}');
+            background-image:url('https://source.unsplash.com/collection/{{ Voyager::setting('admin.bg_image', '2128442') }}/1920x1080/');
             background-color: {{ Voyager::setting("admin.bg_color", "#FFFFFF" ) }};
         }
         body.login .login-sidebar {
@@ -48,7 +48,7 @@
                         @endif
                         <div class="copy animated fadeIn">
                             <h1>{{ Voyager::setting('admin.title', 'Voyager') }}</h1>
-                            <p>{{ Voyager::setting('admin.description', __('voyager::login.welcome')) }}</p>
+							<p>{{ Voyager::setting('admin.description', __('voyager::login.welcome')) }} - Fotos disponiveis em <a target="_Blank" href="http://unsplash.com">Unsplash</a></p>
                         </div>
                     </div> <!-- .logo-title-container -->
                 </div>
