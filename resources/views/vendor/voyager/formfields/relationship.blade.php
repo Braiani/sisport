@@ -121,12 +121,12 @@
 				@php
                     $relationshipData = (isset($data)) ? $data : $dataTypeContent;
                     $selected_values = isset($relationshipData) ? $relationshipData->belongsToMany($options->model, $options->pivot_table)->get()->map(function ($item, $key) use ($options) {
-            			return $item->{$options->label};
+            			return $item;
             		})->all() : array();
                 @endphp
 
                 @if($view == 'browse')
-                    @php
+					@php
                         $string_values = implode(", ", $selected_values);
                         // if(strlen($string_values) > 25){ $string_values = substr($string_values, 0, 25) . '...'; }
                     @endphp
@@ -140,14 +140,26 @@
 					</ul>
                         {{-- <p>{{ $string_values }}</p> --}}
                     @endif
-                @else
+				@else
+				{{-- {{ dd($selected_values) }} --}}
                     @if(empty($selected_values))
                         <p>No results</p>
                     @else
                         <ul>
-							@foreach($selected_values as $selected_value)
-                                <p><i class="voyager-person"></i> {{ $selected_value }}</p>
-                            @endforeach
+						@foreach($selected_values as $selected_value)
+							@if ($dataType->slug == 'portarias')
+								<p><i class="voyager-person"></i> <a href="{{ route('voyager.pessoas.show', $selected_value->id) }}">{{ $selected_value->nome }}</a></p>
+							@elseif($dataType->slug == 'pessoas')
+								<p>
+									<i class="voyager-file-text"></i>
+									<a href="{{ route('voyager.portarias.show', $selected_value->id) }}">
+										{{ $selected_value->port_num }} - {{ $selected_value->descricao }}
+									</a>
+								</p>
+							@else
+								<li>{{ $selected_value }}</li>
+							@endif
+						@endforeach
                         </ul>
                     @endif
                 @endif

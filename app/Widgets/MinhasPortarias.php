@@ -25,17 +25,14 @@ class MinhasPortarias extends AbstractWidget
      */
     public function run()
     {
-        if (Auth::user()->isAdmin() or Auth::user()->isDirge()) {
-            $count = 0;
-        }else{
-            $user = Pessoa::where('siape', Auth::user()->siape)->first();
-            $count = PessoasPortaria::where('pessoa_id', $user->id)->count();
-        }
+        $user = Pessoa::where('siape', Auth::user()->siape)->first();
+        $count = PessoasPortaria::where('pessoa_id', $user->id)->count();
+        $link = route('voyager.pessoas.show', $user->id);
         
         if ($count <= 1) {
             $titulo = __('sisport.widgets.minhasPortarias.titulo-singular');
             $texto = trans_choice('sisport.widgets.minhasPortarias.texto-singular', $count);
-        }else{
+        } else {
             $titulo = __('sisport.widgets.minhasPortarias.titulo-plural');
             $texto = trans_choice('sisport.widgets.minhasPortarias.texto-plural', $count);
         }
@@ -45,8 +42,8 @@ class MinhasPortarias extends AbstractWidget
             'title'  => "{$count} {$titulo}",
             'text'   => $texto,
             'button' => [
-                'text' => 'Visualizar todas as portarias',
-                'link' => route('voyager.portarias.index'),
+                'text' => 'Visualizar minhas portarias',
+                'link' => $link,
             ],
             'image' => 'Minhas Portarias.jpg',
         ]));
@@ -54,6 +51,6 @@ class MinhasPortarias extends AbstractWidget
 
     public function shouldBeDisplayed()
     {
-        return true;
+        return ! Auth::user()->isAdmin() or Auth::user()->isDirge();
     }
 }
