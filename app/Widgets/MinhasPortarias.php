@@ -51,6 +51,6 @@ class MinhasPortarias extends AbstractWidget
 
     public function shouldBeDisplayed()
     {
-        return ! Auth::user()->isAdmin() or Auth::user()->isDirge();
+        return ! (Auth::user()->isAdmin() or Auth::user()->isDirge());
     }
 }
