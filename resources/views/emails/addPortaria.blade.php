@@ -5,7 +5,7 @@
 	<title>Portaria nº {{ $portaria->port_num }} - {{ $portaria->descricao }}</title>
 </head>
 <body>
-	<img src="{{ $message->embed(asset('img/email-head.png')) }}" width="420" height="61"><br>
+	<img src="{{ $message->embed(public_path() . '/img/email-head.png') }}" width="420" height="61"><br>
 	<p>Prezados,</p>
 	<p>Informamos que a Portaria nº {{ $portaria->port_num }} - {{ $portaria->descricao }} foi encaminhada para publicação.</p>
 	
