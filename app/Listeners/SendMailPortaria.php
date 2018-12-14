@@ -30,7 +30,6 @@ class SendMailPortaria
     public function handle(BreadDataAdded $event)
     {
         if ($event->dataType->slug == "portarias") {
-
             $portaria = $event->data;
             $destinatarios = [];
             $assunto = 'Portaria ' . $portaria->port_num . ' - ' . $portaria->descricao;
@@ -39,13 +38,13 @@ class SendMailPortaria
                 array_push($destinatarios, $destinatario->email);
             }
 
-            Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use($destinatarios, $assunto, $portaria){
+            Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use ($destinatarios, $assunto, $portaria) {
                 $message->from('portaria.cg@ifms.edu.br', 'Portaria CG');
                 $message->to($destinatarios);
                 $message->subject($assunto);
                 if ($portaria->arquivo !== null) {
                     foreach (json_decode($portaria->arquivo) as $file) {
-                        $message->attach(Storage::disk(config('voyager.storage.disk'))->url($file->download_link), [
+                        $message->attach(public_path() . '/storage/' . $file->download_link, [
                             'as' => $file->original_name
                         ]);
                     }
