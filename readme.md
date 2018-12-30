@@ -1,7 +1,7 @@
 <p align="center"><img src="http://braianitech.tk/img/bg-home.png"></p>
 
 <p align="center">
-<a href="https://github.com/Braiani/sisport-voyager"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+<a href="https://github.com/Braiani/sisport"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
 ## Sobre o Sisport
@@ -16,10 +16,21 @@ Na versão __atual__ do sisport é possível criar usuários com perfil `Servido
 usermane: siape
 senha: siape
 ```
+Após o primeiro acesso com as credenciais padrão (`siape` e `siape`), o usuário será redirecionado para uma tela de alteração de senha, na qual ele poderá escolher a senha que prefira.
+
+Ainda, após o primeiro acesso, o usuário poderá logar no sistema tanto usando o `siape` como o `e-mail` cadastrado no sistema.
 
 ## Estrutura do sistema
 
 Esse sistema está sendo desenvolvido utilizando-se o [Laravel](http://laravel.com) e [Voyager](https://laravelvoyager.com/).
+
+## Como instalar
+
+* Clonar repositório.
+* Utilizar "Composer" para instalar as dependências do Laravel (`composer install --no-dev`)
+* Editar arquivo ".env" (caso não tenha, fazer uma cópia e editar o arquivo ".env.example")
+* -> Adicionar as informações do servidor de e-mail para envio automático dos e-mails.
+* Rodar comando `php artisan migrate --seed`
 
 ## Contribuições
 
