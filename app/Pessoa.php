@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Pessoa extends Model
 {
     protected $guarded = [];
+    
+    protected $portarias = true;
 
     public function coordenacao()
     {
@@ -15,7 +17,9 @@ class Pessoa extends Model
 
     public function portarias()
     {
-        return $this->belongsToMany(Portaria::class, 'pessoas_portarias');
+        return $this->belongsToMany(Portaria::class, 'pessoas_portarias')
+                    ->withPivot('data_relatorio', 'entregou_relatorio', 'declaracao');
+        ;
     }
 
     public function getPessoaCoordenacaoAttribute()

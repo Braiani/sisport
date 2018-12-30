@@ -119,10 +119,16 @@
             @if(isset($view) && ($view == 'browse' || $view == 'read'))
 
 				@php
-                    $relationshipData = (isset($data)) ? $data : $dataTypeContent;
-                    $selected_values = isset($relationshipData) ? $relationshipData->belongsToMany($options->model, $options->pivot_table)->get()->map(function ($item, $key) use ($options) {
-            			return $item;
-            		})->all() : array();
+					$relationshipData = (isset($data)) ? $data : $dataTypeContent;
+					if (property_exists($relationshipData, 'pessoas')) {
+						$selected_values = $relationshipData->pessoas;
+					}else if (property_exists($relationshipData, 'portarias')) {
+						$selected_values = $relationshipData->portarias;
+					}else{
+						$selected_values = isset($relationshipData) ? $relationshipData->belongsToMany($options->model, $options->pivot_table)->get()->map(function ($item, $key) use ($options) {
+							return $item;
+						})->all() : array();
+					}
                 @endphp
 
                 @if($view == 'browse')
@@ -145,22 +151,84 @@
                     @if(empty($selected_values))
                         <p>No results</p>
                     @else
-                        <ul>
+                        <div>
+						@php
+							$count = 1;
+						@endphp
 						@foreach($selected_values as $selected_value)
 							@if ($dataType->slug == 'portarias')
-								<p><i class="voyager-person"></i> <a href="{{ route('voyager.pessoas.show', $selected_value->id) }}">{{ $selected_value->nome }}</a></p>
+							@if ($count == 1)
+								<div class="row">
+							@endif
+								<div class="form-group col-md-3">
+									<div class="row">
+										<i class="voyager-person"></i> <a href="{{ route('voyager.pessoas.show', $selected_value->id) }}">{{ $selected_value->nome }}</a>
+									</div>
+									<div class="row">
+										<strong>Data relatório:</strong> 
+										{{ 
+											isset($selected_value->pivot->data_relatorio) ? 
+												date('d/m/Y', strtotime($selected_value->pivot->data_relatorio)) :
+												"Sem informações"
+										}}
+									</div>
+									<div class="row">
+										<strong>Entregou relatório?</strong> 
+										{{ isset($selected_value->pivot->entregou_relatorio) ? $selected_value->pivot->entregou_relatorio : 'Sem informações' }}
+									</div>
+									<div class="row">
+										<strong>Declaração emitida?</strong> 
+										{{ isset($selected_value->pivot->declaracao) ? $selected_value->pivot->declaracao : 'Sem informações' }}
+									</div>
+								</div>
+							@if ($count == 4)
+								</div>
+								@php
+								$count = 0;
+								@endphp
+							@endif
 							@elseif($dataType->slug == 'pessoas')
-								<p>
-									<i class="voyager-file-text"></i>
-									<a href="{{ route('voyager.portarias.show', $selected_value->id) }}">
-										{{ $selected_value->port_num }} - {{ $selected_value->descricao }}
-									</a>
-								</p>
+							@if ($count == 1)
+								<div class="row">
+							@endif
+								<div class="form-group col-md-4">
+									<div class="row">
+										<i class="voyager-file-text"></i>
+										<a href="{{ route('voyager.portarias.show', $selected_value->id) }}">
+											{{ $selected_value->port_num }} - {{ $selected_value->descricao }}
+										</a>
+									</div>
+									<div class="row">
+										<strong>Data relatório:</strong> 
+										{{ 
+											isset($selected_value->pivot->data_relatorio) ? 
+												date('d/m/Y', strtotime($selected_value->pivot->data_relatorio)) :
+												"Sem informações"
+										}}
+									</div>
+									<div class="row">
+										<strong>Entregou relatório?</strong> 
+										{{ isset($selected_value->pivot->entregou_relatorio) ? $selected_value->pivot->entregou_relatorio : 'Sem informações' }}
+									</div>
+									<div class="row">
+										<strong>Declaração emitida?</strong> 
+										{{ isset($selected_value->pivot->declaracao) ? $selected_value->pivot->declaracao : 'Sem informações' }}
+									</div>
+								</div>
+							@if ($count == 3)
+								</div>
+								@php
+									$count = 0;
+								@endphp
+							@endif
 							@else
 								<li>{{ $selected_value }}</li>
 							@endif
+							@php
+								$count ++;
+							@endphp
 						@endforeach
-                        </ul>
+						</div>
                     @endif
                 @endif
 
