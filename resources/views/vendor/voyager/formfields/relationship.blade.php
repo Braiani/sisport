@@ -273,6 +273,7 @@
 				<div class="form-group">
 					<p>Informações adicionais:</p>
 					<div id="info_adicionais">
+					@isset($pessoasSelecionadas)
 					@foreach ($pessoasSelecionadas->pessoas as $pessoasSelecionada)
 						<div class="form-group">
 							<div class="col-md-12">
@@ -296,6 +297,7 @@
 							<hr>
 						</div>
 					@endforeach
+					@endisset
 					</div>
 				</div>
 				@endif
