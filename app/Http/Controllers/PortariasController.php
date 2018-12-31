@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Portaria;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
+use TCG\Voyager\Models\DataRow;
+use App\Status;
 
 class PortariasController extends VoyagerBaseController
 {
     public function insertUpdateData($request, $slug, $rows, $data)
     {
+        if (!$request->filled('status_id')) {
+            $rows = $this->defaultStatus($request, $rows);
+        }
+        
         $portaria = parent::insertUpdateData($request, $slug, $rows, $data);
         
         $sync_data = [];
@@ -29,6 +35,14 @@ class PortariasController extends VoyagerBaseController
         $portaria->pessoas()->sync($sync_data);
         
         return $portaria;
+    }
+    
+    public function defaultStatus($request, $rows)
+    {
+        $valorPadrao = Status::padraoCadastro()->first();
+        $request->merge(['status_id' => $valorPadrao->id]);
+        $statusDataRow = DataRow::where('data_type_id', $rows[0]->data_type_id)->where('field', 'status_id')->first();
+        return $rows->push($statusDataRow);
     }
 
     public function get_data(Request $request)
