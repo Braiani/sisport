@@ -90,7 +90,9 @@
 										<th data-field="pessoas" data-formatter="membrosFormatter">Membros</th>
 										<th data-field="observacao">Observação</th>
 										<th data-field="arquivo" data-formatter="linkFormatter">Arquivo</th>
+										@can('read',app($dataType->model_name))
 										<th data-formatter="viewFormatter">Visualizar</th>
+										@endcan
 										@can('add',app($dataType->model_name))
 											<th data-field="actions" class="td-actions text-right" data-events="operateEvents" data-formatter="operateFormatter">Ações</th>
 										@endcan
@@ -104,6 +106,7 @@
 		</div>
 	</div>
 
+	@can('delete',app($dataType->model_name))
 	{{-- Single delete modal --}}
     <div class="modal modal-danger fade" tabindex="-1" id="delete_modal" role="dialog">
 		<div class="modal-dialog">
@@ -123,6 +126,7 @@
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+	@endcan
 @stop
 
 @section('javascript')
@@ -130,7 +134,9 @@
 <script src="{{asset('/js/locale/bootstrap-table-pt-BR.js')}}"></script>
 <script>
 	var $baseUrl = "{{ route('voyager.portarias.index') }}";
+	@can('delete',app($dataType->model_name))
 	var $formActionUrl = '{{ route('voyager.'.$dataType->slug.'.destroy', ['id' => '__id']) }}';
+	@endcan
 	var $baseStorageUrl = "{{ Storage::disk(config('voyager.storage.disk'))->url('__file') }}";
 </script>
 <script src="{{asset('/js/portarias-js.js')}}"></script>

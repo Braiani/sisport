@@ -7,9 +7,25 @@ use App\Portaria;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use TCG\Voyager\Models\DataRow;
 use App\Status;
+use Illuminate\Support\Facades\Auth;
 
 class PortariasController extends VoyagerBaseController
 {
+    public function show(Request $request, $id)
+    {
+        $portaria = Portaria::find($id);
+        if (Auth::user()->can('visibilidade', $portaria)) {
+            return parent::show($request, $id);
+        } else {
+            return redirect()
+                ->route("voyager.portarias.index")
+                ->with([
+                        'message'    => "Você não tem permissão para acessar essa portaria!",
+                        'alert-type' => 'error',
+                    ]);
+        }
+    }
+    
     public function insertUpdateData($request, $slug, $rows, $data)
     {
         if (!$request->filled('status_id')) {
@@ -57,9 +73,16 @@ class PortariasController extends VoyagerBaseController
         }
 
         $query = new Portaria();
+        if (Auth::user()->isAdmin() or Auth::user()->isDirge()) {
+            $visibilidade = true;
+        } else {
+            $visibilidade = false;
+        }
+        $query = $query::visibilidade($visibilidade);
 
         if ($search) {
-            $query = $query->where('descricao', 'LIKE', "%{$search}%")
+            $query = $query->where(function ($query) use ($search) {
+                $query->where('descricao', 'LIKE', "%{$search}%")
                     ->orWhere('port_num', 'LIKE', "%{$search}%")
                     ->orWhere('publicacao', 'LIKE', "%{$search}%")
                     ->orWhereIn('status_id', function ($query) use ($search) {
@@ -72,6 +95,7 @@ class PortariasController extends VoyagerBaseController
                                         ->orWhere('nome', 'LIKE', "%{$search}%");
                                 });
                     });
+            });
         }
         if ($this->verificaData($search)) {
             $data = $this->dateBR($search);
@@ -85,7 +109,9 @@ class PortariasController extends VoyagerBaseController
         $total = $query->count();
 
         $portaria = $query->offset($offset)->limit($limit)->orderBy('id', 'DESC')->with(['pessoas','status'])->get();
-
+        
+        
+        
         $resposta = array(
             'total' => $total,
             'count' => $portaria->count(),

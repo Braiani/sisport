@@ -22,6 +22,11 @@ class Portaria extends Model
     {
         return $this->belongsTo(Status::class);
     }
+    
+    public function scopeVisibilidade($query, $visibilidade)
+    {
+        return $query->where('visibilidade', $visibilidade);
+    }
 
     public function getPortariaDescricaoAttribute()
     {
