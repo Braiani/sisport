@@ -4,9 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Portaria;
+use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 
-class PortariasController extends Controller
+class PortariasController extends VoyagerBaseController
 {
+    public function insertUpdateData($request, $slug, $rows, $data)
+    {
+        $portaria = parent::insertUpdateData($request, $slug, $rows, $data);
+        
+        $sync_data = [];
+        $pessoas = $request->portaria_belongstomany_pessoa_relationship;
+        $dataRelatorio = $request->data_relatorio;
+        $entregouRelatorio = $request->entregou_relatorio;
+        $declaracao = $request->declaracao;
+
+        foreach ($pessoas as $key => $pessoa) {
+            $sync_data[$pessoa] = [
+                'data_relatorio' => $dataRelatorio[$key],
+                'entregou_relatorio' => $entregouRelatorio[$key],
+                'declaracao' => $declaracao[$key]
+            ];
+        }
+        
+        $portaria->pessoas()->sync($sync_data);
+        
+        return $portaria;
+    }
+
     public function get_data(Request $request)
     {
         $offset = $request->get('offset');
