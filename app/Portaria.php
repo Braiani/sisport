@@ -7,17 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 class Portaria extends Model
 {
     protected $guarded = [];
+    
+    protected $pessoas = true;
 
     // protected $table = 'portarias';
 
     public function pessoas()
     {
-        return $this->belongsToMany(Pessoa::class, 'pessoas_portarias');
+        return $this->belongsToMany(Pessoa::class, 'pessoas_portarias')
+                    ->withPivot('data_relatorio', 'entregou_relatorio', 'declaracao');
     }
     
     public function status()
     {
         return $this->belongsTo(Status::class);
+    }
+    
+    public function scopeVisibilidade($query, $visibilidade)
+    {
+        return $query->where('visibilidade', $visibilidade);
     }
 
     public function getPortariaDescricaoAttribute()

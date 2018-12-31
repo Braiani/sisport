@@ -12,11 +12,13 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
+        
+
         \DB::table('settings')->delete();
         
-        \DB::table('settings')->insert(array(
-            0 =>
-            array(
+        \DB::table('settings')->insert(array (
+            0 => 
+            array (
                 'id' => 1,
                 'key' => 'site.title',
                 'display_name' => 'Site Title',
@@ -26,8 +28,8 @@ class SettingsTableSeeder extends Seeder
                 'order' => 1,
                 'group' => 'Site',
             ),
-            1 =>
-            array(
+            1 => 
+            array (
                 'id' => 2,
                 'key' => 'site.description',
                 'display_name' => 'Site Description',
@@ -37,30 +39,30 @@ class SettingsTableSeeder extends Seeder
                 'order' => 2,
                 'group' => 'Site',
             ),
-            2 =>
-            array(
+            2 => 
+            array (
                 'id' => 3,
                 'key' => 'site.logo',
                 'display_name' => 'Site Logo',
-                'value' => null,
+                'value' => NULL,
                 'details' => '',
                 'type' => 'image',
                 'order' => 3,
                 'group' => 'Site',
             ),
-            3 =>
-            array(
+            3 => 
+            array (
                 'id' => 4,
                 'key' => 'site.google_analytics_tracking_id',
                 'display_name' => 'Google Analytics Tracking ID',
-                'value' => null,
+                'value' => NULL,
                 'details' => '',
                 'type' => 'text',
                 'order' => 4,
                 'group' => 'Site',
             ),
-            4 =>
-            array(
+            4 => 
+            array (
                 'id' => 6,
                 'key' => 'admin.title',
                 'display_name' => 'Admin Title',
@@ -70,8 +72,8 @@ class SettingsTableSeeder extends Seeder
                 'order' => 1,
                 'group' => 'Admin',
             ),
-            5 =>
-            array(
+            5 => 
+            array (
                 'id' => 7,
                 'key' => 'admin.description',
                 'display_name' => 'Admin Description',
@@ -81,50 +83,52 @@ class SettingsTableSeeder extends Seeder
                 'order' => 2,
                 'group' => 'Admin',
             ),
-            6 =>
-            array(
+            6 => 
+            array (
                 'id' => 8,
                 'key' => 'admin.loader',
                 'display_name' => 'Admin Loader',
-                'value' => null,
+                'value' => NULL,
                 'details' => '',
                 'type' => 'image',
                 'order' => 3,
                 'group' => 'Admin',
             ),
-            7 =>
-            array(
+            7 => 
+            array (
                 'id' => 9,
                 'key' => 'admin.icon_image',
                 'display_name' => 'Admin Icon Image',
-                'value' => null,
+                'value' => NULL,
                 'details' => '',
                 'type' => 'image',
                 'order' => 4,
                 'group' => 'Admin',
             ),
-            8 =>
-            array(
+            8 => 
+            array (
                 'id' => 10,
                 'key' => 'admin.google_analytics_client_id',
-                'display_name' => 'Google Analytics Client ID (used for admin dashboard)',
-                'value' => null,
+            'display_name' => 'Google Analytics Client ID (used for admin dashboard)',
+                'value' => NULL,
                 'details' => '',
                 'type' => 'text',
                 'order' => 1,
                 'group' => 'Admin',
             ),
-            9 =>
-            array(
+            9 => 
+            array (
                 'id' => 11,
                 'key' => 'admin.bg_image',
                 'display_name' => 'Admin Background Image',
                 'value' => '3420907',
-                'details' => null,
+                'details' => NULL,
                 'type' => 'text',
                 'order' => 5,
                 'group' => 'Admin',
             ),
         ));
+        
+        
     }
 }

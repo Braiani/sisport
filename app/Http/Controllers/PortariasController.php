@@ -4,9 +4,63 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Portaria;
+use TCG\Voyager\Http\Controllers\VoyagerBaseController;
+use TCG\Voyager\Models\DataRow;
+use App\Status;
+use Illuminate\Support\Facades\Auth;
 
-class PortariasController extends Controller
+class PortariasController extends VoyagerBaseController
 {
+    public function show(Request $request, $id)
+    {
+        $portaria = Portaria::find($id);
+        if (Auth::user()->can('visibilidade', $portaria)) {
+            return parent::show($request, $id);
+        } else {
+            return redirect()
+                ->route("voyager.portarias.index")
+                ->with([
+                        'message'    => "Você não tem permissão para acessar essa portaria!",
+                        'alert-type' => 'error',
+                    ]);
+        }
+    }
+    
+    public function insertUpdateData($request, $slug, $rows, $data)
+    {
+        if (!$request->filled('status_id')) {
+            $rows = $this->defaultStatus($request, $rows);
+        }
+        
+        $portaria = parent::insertUpdateData($request, $slug, $rows, $data);
+        
+        $sync_data = [];
+        $pessoas = $request->portaria_belongstomany_pessoa_relationship;
+        $dataRelatorio = $request->data_relatorio;
+        $entregouRelatorio = $request->entregou_relatorio;
+        $declaracao = $request->declaracao;
+
+        foreach ($pessoas as $key => $pessoa) {
+            $sync_data[$pessoa] = [
+                'data_relatorio' => $dataRelatorio[$key],
+                'entregou_relatorio' => $entregouRelatorio[$key],
+                'declaracao' => $declaracao[$key]
+            ];
+        }
+        
+        $portaria->pessoas()->sync($sync_data);
+        
+        return $portaria;
+    }
+    
+    public function defaultStatus($request, $rows)
+    {
+        $valorPadrao = Status::padraoCadastro()->first();
+        $request->merge(['status_id' => $valorPadrao->id]);
+        $statusDataRow = DataRow::where('data_type_id', $rows[0]->data_type_id)->where('field', 'status_id')->first();
+        return $rows->push($statusDataRow);
+    }
+
     public function get_data(Request $request)
     {
         $offset = $request->get('offset');
@@ -19,9 +73,16 @@ class PortariasController extends Controller
         }
 
         $query = new Portaria();
+        if (Auth::user()->isAdmin() or Auth::user()->isDirge()) {
+            $visibilidade = true;
+        } else {
+            $visibilidade = false;
+        }
+        $query = $query::visibilidade($visibilidade);
 
         if ($search) {
-            $query = $query->where('descricao', 'LIKE', "%{$search}%")
+            $query = $query->where(function ($query) use ($search) {
+                $query->where('descricao', 'LIKE', "%{$search}%")
                     ->orWhere('port_num', 'LIKE', "%{$search}%")
                     ->orWhere('publicacao', 'LIKE', "%{$search}%")
                     ->orWhereIn('status_id', function ($query) use ($search) {
@@ -34,6 +95,7 @@ class PortariasController extends Controller
                                         ->orWhere('nome', 'LIKE', "%{$search}%");
                                 });
                     });
+            });
         }
         if ($this->verificaData($search)) {
             $data = $this->dateBR($search);
@@ -47,7 +109,9 @@ class PortariasController extends Controller
         $total = $query->count();
 
         $portaria = $query->offset($offset)->limit($limit)->orderBy('id', 'DESC')->with(['pessoas','status'])->get();
-
+        
+        
+        
         $resposta = array(
             'total' => $total,
             'count' => $portaria->count(),

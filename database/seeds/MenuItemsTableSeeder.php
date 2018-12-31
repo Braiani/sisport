@@ -163,22 +163,6 @@ class MenuItemsTableSeeder extends Seeder
             ),
             9 => 
             array (
-                'id' => 14,
-                'menu_id' => 1,
-                'title' => 'Periodicidades',
-                'url' => '/admin/periodicidades',
-                'target' => '_self',
-                'icon_class' => 'voyager-refresh',
-                'color' => NULL,
-                'parent_id' => NULL,
-                'order' => 5,
-                'created_at' => '2018-02-24 20:34:21',
-                'updated_at' => '2018-02-24 21:07:04',
-                'route' => NULL,
-                'parameters' => NULL,
-            ),
-            10 => 
-            array (
                 'id' => 15,
                 'menu_id' => 1,
                 'title' => 'Status',
@@ -193,7 +177,7 @@ class MenuItemsTableSeeder extends Seeder
                 'route' => NULL,
                 'parameters' => '',
             ),
-            11 => 
+            10 => 
             array (
                 'id' => 16,
                 'menu_id' => 1,
@@ -209,7 +193,7 @@ class MenuItemsTableSeeder extends Seeder
                 'route' => NULL,
                 'parameters' => '',
             ),
-            12 => 
+            11 => 
             array (
                 'id' => 17,
                 'menu_id' => 1,
@@ -225,7 +209,7 @@ class MenuItemsTableSeeder extends Seeder
                 'route' => NULL,
                 'parameters' => '',
             ),
-            13 => 
+            12 => 
             array (
                 'id' => 18,
                 'menu_id' => 1,
@@ -241,7 +225,7 @@ class MenuItemsTableSeeder extends Seeder
                 'route' => NULL,
                 'parameters' => '',
             ),
-            14 => 
+            13 => 
             array (
                 'id' => 19,
                 'menu_id' => 1,

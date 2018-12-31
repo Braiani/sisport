@@ -19,42 +19,6 @@ class DataTypesTableSeeder extends Seeder
         \DB::table('data_types')->insert(array (
             0 => 
             array (
-                'id' => 1,
-                'name' => 'posts',
-                'slug' => 'posts',
-                'display_name_singular' => 'Post',
-                'display_name_plural' => 'Posts',
-                'icon' => 'voyager-news',
-                'model_name' => 'TCG\\Voyager\\Models\\Post',
-                'policy_name' => 'TCG\\Voyager\\Policies\\PostPolicy',
-                'controller' => '',
-                'description' => '',
-                'generate_permissions' => 1,
-                'server_side' => 0,
-                'details' => NULL,
-                'created_at' => '2018-02-24 20:08:07',
-                'updated_at' => '2018-02-24 20:08:07',
-            ),
-            1 => 
-            array (
-                'id' => 2,
-                'name' => 'pages',
-                'slug' => 'pages',
-                'display_name_singular' => 'Page',
-                'display_name_plural' => 'Pages',
-                'icon' => 'voyager-file-text',
-                'model_name' => 'TCG\\Voyager\\Models\\Page',
-                'policy_name' => NULL,
-                'controller' => '',
-                'description' => '',
-                'generate_permissions' => 1,
-                'server_side' => 0,
-                'details' => NULL,
-                'created_at' => '2018-02-24 20:08:07',
-                'updated_at' => '2018-02-24 20:08:07',
-            ),
-            2 => 
-            array (
                 'id' => 3,
                 'name' => 'users',
                 'slug' => 'users',
@@ -71,25 +35,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-02-24 20:08:07',
                 'updated_at' => '2018-08-30 02:13:12',
             ),
-            3 => 
-            array (
-                'id' => 4,
-                'name' => 'categories',
-                'slug' => 'categories',
-                'display_name_singular' => 'Category',
-                'display_name_plural' => 'Categories',
-                'icon' => 'voyager-categories',
-                'model_name' => 'TCG\\Voyager\\Models\\Category',
-                'policy_name' => NULL,
-                'controller' => '',
-                'description' => '',
-                'generate_permissions' => 1,
-                'server_side' => 0,
-                'details' => NULL,
-                'created_at' => '2018-02-24 20:08:07',
-                'updated_at' => '2018-02-24 20:08:07',
-            ),
-            4 => 
+            1 => 
             array (
                 'id' => 5,
                 'name' => 'menus',
@@ -107,7 +53,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-02-24 20:08:07',
                 'updated_at' => '2018-02-24 20:08:07',
             ),
-            5 => 
+            2 => 
             array (
                 'id' => 6,
                 'name' => 'roles',
@@ -125,25 +71,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-02-24 20:08:07',
                 'updated_at' => '2018-02-24 20:08:07',
             ),
-            6 => 
-            array (
-                'id' => 7,
-                'name' => 'periodicidades',
-                'slug' => 'periodicidades',
-                'display_name_singular' => 'Periodicidade',
-                'display_name_plural' => 'Periodicidades',
-                'icon' => 'voyager-refresh',
-                'model_name' => 'App\\Periodicidade',
-                'policy_name' => NULL,
-                'controller' => NULL,
-                'description' => NULL,
-                'generate_permissions' => 1,
-                'server_side' => 0,
-                'details' => NULL,
-                'created_at' => '2018-02-24 20:34:21',
-                'updated_at' => '2018-02-24 20:34:21',
-            ),
-            7 => 
+            3 => 
             array (
                 'id' => 8,
                 'name' => 'status',
@@ -157,11 +85,11 @@ class DataTypesTableSeeder extends Seeder
                 'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
-                'details' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null}',
                 'created_at' => '2018-02-24 20:35:46',
-                'updated_at' => '2018-02-24 20:35:46',
+                'updated_at' => '2018-12-31 13:17:46',
             ),
-            8 => 
+            4 => 
             array (
                 'id' => 9,
                 'name' => 'coordenacoes',
@@ -179,7 +107,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-02-24 20:37:18',
                 'updated_at' => '2018-04-03 01:03:19',
             ),
-            9 => 
+            5 => 
             array (
                 'id' => 10,
                 'name' => 'pessoas',
@@ -197,7 +125,7 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-02-24 21:01:34',
                 'updated_at' => '2018-12-11 02:49:48',
             ),
-            10 => 
+            6 => 
             array (
                 'id' => 11,
                 'name' => 'portarias',
@@ -206,32 +134,14 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_plural' => 'Portarias',
                 'icon' => 'voyager-file-text',
                 'model_name' => 'App\\Portaria',
-                'policy_name' => NULL,
-                'controller' => NULL,
+                'policy_name' => '\\App\\Policies\\PortariaPolicy',
+                'controller' => 'PortariasController',
                 'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
-                'details' => '{"order_column":null,"order_display_column":null}',
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null}',
                 'created_at' => '2018-02-24 21:15:38',
-                'updated_at' => '2018-12-13 01:38:28',
-            ),
-            11 => 
-            array (
-                'id' => 12,
-                'name' => 'pessoas_portarias',
-                'slug' => 'pessoas-portarias',
-                'display_name_singular' => 'Pessoas Portaria',
-                'display_name_plural' => 'Pessoas Portarias',
-                'icon' => 'voyager-data',
-                'model_name' => 'App\\PessoasPortaria',
-                'policy_name' => NULL,
-                'controller' => NULL,
-                'description' => NULL,
-                'generate_permissions' => 1,
-                'server_side' => 0,
-                'details' => NULL,
-                'created_at' => '2018-02-27 02:42:48',
-                'updated_at' => '2018-02-27 02:43:23',
+                'updated_at' => '2018-12-31 14:20:20',
             ),
         ));
         
