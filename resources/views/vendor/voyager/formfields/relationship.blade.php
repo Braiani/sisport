@@ -232,34 +232,73 @@
                     @endif
                 @endif
 
-            @else
-                <select
-                    class="form-control @if(isset($options->taggable) && $options->taggable == 'on') select2-taggable @else select2 @endif"
-                    name="{{ $relationshipField }}[]" multiple
-                    @if(isset($options->taggable) && $options->taggable == 'on')
-                        data-route="{{ route('voyager.'.str_slug($options->table).'.store') }}"
-                        data-label="{{$options->label}}"
-                        data-error-message="{{__('voyager::bread.error_tagging')}}"
-                    @endif
-                >
+			@else
+				<div class="form-group">
+					@php
+						$selected_values = isset($dataTypeContent) ? $dataTypeContent->belongsToMany($options->model, $options->pivot_table)->get()->map(function ($item, $key) use ($options) {
+							return $item->{$options->key};
+						})->all() : array();
+						$relationshipOptions = app($options->model)->all();
+						$pessoasSelecionadas = \App\Portaria::where('id', $dataTypeContent->id)->first();
+					@endphp
+					<select @if ($dataType->slug == "portarias") id="membros" @endif
+						class="form-control @if(isset($options->taggable) && $options->taggable == 'on') select2-taggable @else select2 @endif"
+						name="{{ $relationshipField }}[]" multiple
+						@if(isset($options->taggable) && $options->taggable == 'on')
+							data-route="{{ route('voyager.'.str_slug($options->table).'.store') }}"
+							data-label="{{$options->label}}"
+							data-error-message="{{__('voyager::bread.error_tagging')}}"
+						@endif
+					>
 
-                        @php
-                            $selected_values = isset($dataTypeContent) ? $dataTypeContent->belongsToMany($options->model, $options->pivot_table)->get()->map(function ($item, $key) use ($options) {
-                                return $item->{$options->key};
-                            })->all() : array();
-                            $relationshipOptions = app($options->model)->all();
-                        @endphp
+							@if($row->required === 0)
+								<option value="">{{__('voyager::generic.none')}}</option>
+							@endif
 
-                        @if($row->required === 0)
-                            <option value="">{{__('voyager::generic.none')}}</option>
-                        @endif
+							@if ($dataType->slug == 'portarias')
+							@foreach ($relationshipOptions as $relationshipOption)
+								<option value="{{ $relationshipOption->id }}" @if(in_array($relationshipOption->id, $selected_values)){{ 'selected="selected"' }}@endif>
+									{{ $relationshipOption->nome }}
+								</option>
+							@endforeach
+							@else
+							@foreach($relationshipOptions as $relationshipOption)
+								<option value="{{ $relationshipOption->{$options->key} }}" @if(in_array($relationshipOption->{$options->key}, $selected_values)){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->label} }}</option>
+							@endforeach
+							@endif
 
-                        @foreach($relationshipOptions as $relationshipOption)
-                            <option value="{{ $relationshipOption->{$options->key} }}" @if(in_array($relationshipOption->{$options->key}, $selected_values)){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->label} }}</option>
-                        @endforeach
-
-                </select>
-
+					</select>
+				</div>
+				@if ($dataType->slug == "portarias")
+				<div class="form-group">
+					<p>Informações adicionais:</p>
+					<div id="info_adicionais">
+					@foreach ($pessoasSelecionadas->pessoas as $pessoasSelecionada)
+						<div class="form-group">
+							<div class="col-md-12">
+								<p><strong>{{ $pessoasSelecionada->nome }}</strong></p>
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Data para entregar relatório:</label>
+								<input id="dt_rel_{{$pessoasSelecionada->id}}" type="date" name="data_relatorio[]"
+										class="form-control dt_relatorio" value="{{ $pessoasSelecionada->pivot->data_relatorio }}">
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Entregou o relatório?</label>
+								<input id="en_rel_{{$pessoasSelecionada->id}}" type="text" name="entregou_relatorio[]" 
+										class="form-control ent_relatorio" value="{{ $pessoasSelecionada->pivot->entregou_relatorio }}">
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Declaração emitida?</label>
+								<input id="declaracao_{{$pessoasSelecionada->id}}" type="text" name="declaracao[]"
+										class="form-control declaracao" value="{{ $pessoasSelecionada->pivot->declaracao }}">
+							</div>
+							<hr>
+						</div>
+					@endforeach
+					</div>
+				</div>
+				@endif
             @endif
 
         @endif
@@ -270,4 +309,66 @@
 
     @endif
 
+@endif
+@if ($dataType->slug == "portarias")
+@section('javascript')
+    <script>
+        $('document').ready(function () {
+            
+            //Capturar quantidades por item
+            $('#membros').on('change', function(){
+                var inputDataRelatorio = {};
+                var inputEntregouRelatorio = {};
+                var inputDeclaracao = {};
+                if ($('#info_adicionais').children().length > 0) {
+                    inputDataRelatorio = $(".dt_relatorio");
+                    inputEntregouRelatorio = $(".ent_relatorio");
+                    inputDeclaracao = $(".declaracao");
+					$('#info_adicionais').children().remove();
+                }
+                $('#membros option:selected').each(function(){
+                    $('#info_adicionais').append(
+						'<div class="col-md-12">' +
+							'<p><strong>' + $(this).text() + '</strong></p>' +
+						'</div>' +
+						'<div class="col-md-4 form-group">' +
+							'<label>Data para entregar relatório:</label>' +
+							'<input id="dt_rel_'+$(this).val()+'" type="date" name="data_relatorio[]" class="form-control dt_relatorio">' +
+						'</div>' +
+						'<div class="col-md-4 form-group">' +
+							'<label>Entregou o relatório?</label>' +
+							'<input id="en_rel_'+$(this).val()+'" type="text" name="entregou_relatorio[]" class="form-control ent_relatorio">' +
+						'</div>' +
+						'<div class="col-md-4 form-group">' +
+							'<label>Declaração emitida?</label>' +
+							'<input id="declaracao_'+$(this).val()+'" type="text" name="declaracao[]" class="form-control declaracao">' +
+						'</div>' +
+						'<hr>'
+                    );
+                });
+                if (!$.isEmptyObject(inputDataRelatorio)) {
+                    inputDataRelatorio.each(function(){
+                        if ($('#' + $(this).attr('id'))) {
+                            $('#' + $(this).attr('id')).val($(this).val());
+                        }
+                    });
+				}
+				if (!$.isEmptyObject(inputEntregouRelatorio)) {
+                    inputEntregouRelatorio.each(function(){
+                        if ($('#' + $(this).attr('id'))) {
+                            $('#' + $(this).attr('id')).val($(this).val());
+                        }
+                    });
+				}
+				if (!$.isEmptyObject(inputDeclaracao)) {
+                    inputDeclaracao.each(function(){
+                        if ($('#' + $(this).attr('id'))) {
+                            $('#' + $(this).attr('id')).val($(this).val());
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+@stop
 @endif
