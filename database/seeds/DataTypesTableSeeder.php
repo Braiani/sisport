@@ -85,9 +85,9 @@ class DataTypesTableSeeder extends Seeder
                 'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
-                'details' => NULL,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null}',
                 'created_at' => '2018-02-24 20:35:46',
-                'updated_at' => '2018-02-24 20:35:46',
+                'updated_at' => '2018-12-31 13:17:46',
             ),
             4 => 
             array (
@@ -134,14 +134,14 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_plural' => 'Portarias',
                 'icon' => 'voyager-file-text',
                 'model_name' => 'App\\Portaria',
-                'policy_name' => NULL,
+                'policy_name' => '\\App\\Policies\\PortariaPolicy',
                 'controller' => 'PortariasController',
                 'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null}',
                 'created_at' => '2018-02-24 21:15:38',
-                'updated_at' => '2018-12-31 04:38:38',
+                'updated_at' => '2018-12-31 14:20:20',
             ),
         ));
         

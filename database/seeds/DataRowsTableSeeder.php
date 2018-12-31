@@ -334,7 +334,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 0,
-                'details' => NULL,
+                'details' => '{}',
                 'order' => 1,
             ),
             20 => 
@@ -350,7 +350,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => NULL,
+                'details' => '{"display":{"width":"6"}}',
                 'order' => 2,
             ),
             21 => 
@@ -652,10 +652,10 @@ class DataRowsTableSeeder extends Seeder
                 'browse' => 1,
                 'read' => 1,
                 'edit' => 1,
-                'add' => 1,
+                'add' => 0,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 10,
+                'order' => 8,
             ),
             40 => 
             array (
@@ -671,7 +671,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 1,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 14,
+                'order' => 10,
             ),
             41 => 
             array (
@@ -687,7 +687,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 16,
+                'order' => 13,
             ),
             42 => 
             array (
@@ -703,7 +703,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 0,
                 'delete' => 1,
                 'details' => '{}',
-                'order' => 17,
+                'order' => 14,
             ),
             43 => 
             array (
@@ -716,10 +716,10 @@ class DataRowsTableSeeder extends Seeder
                 'browse' => 1,
                 'read' => 1,
                 'edit' => 1,
-                'add' => 1,
+                'add' => 0,
                 'delete' => 1,
                 'details' => '{"model":"App\\\\Status","table":"status","type":"belongsTo","column":"status_id","key":"id","label":"descricao","pivot_table":"coordenacoes","pivot":"0","taggable":"0"}',
-                'order' => 9,
+                'order' => 7,
             ),
             44 => 
             array (
@@ -751,7 +751,7 @@ class DataRowsTableSeeder extends Seeder
                 'add' => 1,
                 'delete' => 1,
                 'details' => '{"model":"App\\\\Pessoa","table":"pessoas","type":"belongsToMany","column":"id","key":"id","label":"nome","pivot_table":"pessoas_portarias","pivot":"1","taggable":"0"}',
-                'order' => 13,
+                'order' => 9,
             ),
             46 => 
             array (
@@ -830,8 +830,8 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{}',
-                'order' => 15,
+                'details' => '{"display":{"width":"9"}}',
+                'order' => 12,
             ),
             51 => 
             array (
@@ -848,6 +848,38 @@ class DataRowsTableSeeder extends Seeder
                 'delete' => 1,
                 'details' => '{"model":"App\\\\Portaria","table":"portarias","type":"belongsToMany","column":"id","key":"id","label":"descricao","pivot_table":"pessoas_portarias","pivot":"1","taggable":"0"}',
                 'order' => 8,
+            ),
+            52 => 
+            array (
+                'id' => 108,
+                'data_type_id' => 8,
+                'field' => 'padrao',
+                'type' => 'select_dropdown',
+                'display_name' => 'Valores padrão',
+                'required' => 0,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{"default":"0","options":{"0":"Nenhum","1":"Cadastro de portaria","2":"Vencimento de portaria"},"description":"Utilize para informar ao sistemas os valores padr\\u00f5es!","display":{"width":"6"}}',
+                'order' => 3,
+            ),
+            53 => 
+            array (
+                'id' => 109,
+                'data_type_id' => 11,
+                'field' => 'visibilidade',
+                'type' => 'checkbox',
+                'display_name' => 'Visibilidade',
+                'required' => 1,
+                'browse' => 0,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => '{"display":{"width":"3"},"on":"Restrito","off":"P\\u00fablico","checked":"false"}',
+                'order' => 11,
             ),
         ));
         
