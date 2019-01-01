@@ -16,7 +16,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'siape'
+        'name', 'email', 'password', 'siape', 'pessoa_id'
     ];
 
     /**
@@ -30,25 +30,16 @@ class User extends \TCG\Voyager\Models\User
 
     public function isAdmin()
     {
-        $admin = false;
-        foreach ($this->roles_all() as  $role) {
-            if ($role->name === 'Administrador') {
-                $admin = true;
-                break;
-            }
-        }
-        return $admin;
+        return $this->hasRole('Administrador');
     }
 
     public function isDirge()
     {
-        $dirge = false;
-        foreach ($this->roles_all() as  $role) {
-            if ($role->name === 'DIRGE') {
-                $dirge = true;
-                break;
-            }
-        }
-        return $dirge;
+        return $this->hasRole('DIRGE');
+    }
+    
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class);
     }
 }
