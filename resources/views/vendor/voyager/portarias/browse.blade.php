@@ -89,6 +89,7 @@
 											>Status</th>
 										<th data-field="pessoas" data-formatter="membrosFormatter">Membros</th>
 										<th data-field="observacao">Observação</th>
+										<th data-field="restrito" data-formatter="restritoFormatter">Restrito?</th>
 										<th data-field="arquivo" data-formatter="linkFormatter">Arquivo</th>
 										@can('read',app($dataType->model_name))
 										<th data-formatter="viewFormatter">Visualizar</th>

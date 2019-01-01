@@ -60,6 +60,14 @@ function membrosFormatter(value, row, index){
 	return '';
 }
 
+function restritoFormatter(value, row, index){
+	if (value) {
+		return '<span class="label label-info">Sim</span>';
+	}else{
+		return '<span class="label label-primary">Não</span>';
+	}
+}
+
 function operateFormatter(value, row, index) {
     return [
         '<a title="Editar" class="btn btn-sm btn-warning edit" href="'+ $baseUrl + '/' + row.id + '/edit' + '">',
