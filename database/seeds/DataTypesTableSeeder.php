@@ -121,9 +121,9 @@ class DataTypesTableSeeder extends Seeder
                 'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 1,
-                'details' => '{"order_column":null,"order_display_column":null}',
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":"nome"}',
                 'created_at' => '2018-02-24 21:01:34',
-                'updated_at' => '2018-12-11 02:49:48',
+                'updated_at' => '2019-01-01 15:16:26',
             ),
             6 => 
             array (
@@ -138,10 +138,10 @@ class DataTypesTableSeeder extends Seeder
                 'controller' => 'PortariasController',
                 'description' => NULL,
                 'generate_permissions' => 1,
-                'server_side' => 0,
+                'server_side' => 1,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null}',
                 'created_at' => '2018-02-24 21:15:38',
-                'updated_at' => '2018-12-31 14:20:20',
+                'updated_at' => '2019-01-01 15:41:55',
             ),
         ));
         

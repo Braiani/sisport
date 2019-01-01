@@ -734,7 +734,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{"model":"App\\\\Coordenacao","table":"coordenacoes","type":"belongsTo","column":"coordenacoes_id","key":"id","label":"sigla_coordenacao","pivot_table":"categories","pivot":"0","taggable":"0"}',
+                'details' => '{"model":"App\\\\Coordenacao","table":"coordenacoes","type":"belongsTo","column":"coordenacoes_id","key":"id","label":"sigla_coordenacao","pivot_table":"coordenacoes","pivot":"0","taggable":"0"}',
                 'order' => 6,
             ),
             45 => 
@@ -867,19 +867,19 @@ class DataRowsTableSeeder extends Seeder
             ),
             53 => 
             array (
-                'id' => 109,
+                'id' => 110,
                 'data_type_id' => 11,
-                'field' => 'visibilidade',
+                'field' => 'restrito',
                 'type' => 'checkbox',
-                'display_name' => 'Visibilidade',
+                'display_name' => 'Restrito?',
                 'required' => 1,
-                'browse' => 0,
+                'browse' => 1,
                 'read' => 1,
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => '{"display":{"width":"3"},"on":"Restrito","off":"P\\u00fablico","checked":"false"}',
-                'order' => 11,
+                'details' => '{"on":"Sim","off":"N\\u00e3o","checked":"false","display":{"width":"3"}}',
+                'order' => 10,
             ),
         ));
         
