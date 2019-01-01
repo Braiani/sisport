@@ -5,7 +5,6 @@ namespace App\Widgets;
 use Arrilot\Widgets\AbstractWidget;
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
-use App\Portaria;
 use App\PessoasPortaria;
 use Illuminate\Support\Facades\Auth;
 use App\Pessoa;
@@ -25,7 +24,7 @@ class MinhasPortarias extends AbstractWidget
      */
     public function run()
     {
-        $user = Pessoa::where('siape', Auth::user()->siape)->first();
+        $user = Auth::user()->pessoa;
         $count = PessoasPortaria::where('pessoa_id', $user->id)->count();
         $link = route('voyager.pessoas.show', $user->id);
         
