@@ -30,11 +30,25 @@ class User extends \TCG\Voyager\Models\User
 
     public function isAdmin()
     {
-        return $this->role->name === 'Administrador';
+        $admin = false;
+        foreach ($this->roles_all() as  $role) {
+            if ($role->name === 'Administrador') {
+                $admin = true;
+                break;
+            }
+        }
+        return $admin;
     }
 
     public function isDirge()
     {
-        return $this->role->name === 'DIRGE';
+        $dirge = false;
+        foreach ($this->roles_all() as  $role) {
+            if ($role->name === 'DIRGE') {
+                $dirge = true;
+                break;
+            }
+        }
+        return $dirge;
     }
 }

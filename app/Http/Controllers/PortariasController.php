@@ -73,12 +73,10 @@ class PortariasController extends VoyagerBaseController
         }
 
         $query = new Portaria();
-        if (Auth::user()->isAdmin() or Auth::user()->isDirge()) {
-            $visibilidade = true;
-        } else {
-            $visibilidade = false;
-        }
-        $query = $query::visibilidade($visibilidade);
+        
+        $restrito = (Auth::user()->isAdmin() or Auth::user()->isDirge());
+        
+        $restrito ?: $query = $query::restrito($restrito);
 
         if ($search) {
             $query = $query->where(function ($query) use ($search) {
