@@ -188,15 +188,22 @@
 							@endif
 							@elseif($dataType->slug == 'pessoas')
 								@can('visibilidade', $selected_value)
+									@php
+										$status = $selected_value->status;
+									@endphp
 									@if ($count == 1)
 										<div class="row" style="margin-left: 0px;">
 									@endif
-										<div class="form-group col-md-4">
+										<div class="form-group col-md-4 @if($status->padrao == 2) bg-danger @endif">
 											<div class="row">
 												<i class="voyager-file-text"></i>
 												<a href="{{ route('voyager.portarias.show', $selected_value->id) }}">
 													{{ $selected_value->port_num }} - {{ $selected_value->descricao }}
 												</a>
+											</div>
+											<div class="row">
+												<strong>Status da portaria:</strong> 
+												{{ $status->descricao }}
 											</div>
 											<div class="row">
 												<strong>Data relatório:</strong> 
