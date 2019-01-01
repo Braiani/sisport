@@ -14,47 +14,40 @@ class LoginController extends VoyagerAuthController
 
     public function postLogin(Request $request)
     {
-        if (strpos($request->email, '@') !== false) {
+        if (strpos($request->email, '@')) {
             $this->userHasEmail = true;
         }
         
-
         if ($this->userHasEmail) {
-            
             return parent::postLogin($request);
-
-        }else{
+        } else {
             $siape = $request->email;
             $request->merge(['siape' => $siape]);
+            
+            $primeiroLogin = $this->primeiroLogin($siape);
 
-
-            if ($this->primeiroLogin($siape) and $siape !== $request->password) {
+            if ($primeiroLogin and $siape !== $request->password) {
                 return $this->sendFailedLoginResponse($request);
             }
 
-            if ($this->primeiroLogin($siape)) {
-                $servidor = Pessoa::where('siape', $siape)->count() > 0;
-
-                if ($servidor) {
-
-                    if (User::where('siape', $siape)->count() > 0) {
-                        return parent::postLogin($request);
-                    }
-
-                    $servidor = Pessoa::where('siape', $siape)->first();
+            if ($primeiroLogin) {
+                $servidor = Pessoa::where('siape', $siape);
+                if ($servidor->exists()) {
+                    $servidor = $servidor->first();
                     User::create([
-                        'name' => $servidor->nome,
-                        'password' => bcrypt($servidor->siape),
-                        'siape' => $siape,
-                        'email' => $servidor->email
+                        'name' 		=> $servidor->nome,
+                        'password' 	=> bcrypt($servidor->siape),
+                        'siape' 	=> $siape,
+                        'email' 	=> $servidor->email,
+                        'pessoa_id' => $servidor->id
                     ]);
 
                     return parent::postLogin($request);
                 }
+                return $this->sendFailedLoginResponse($request);
             }
 
             return parent::postLogin($request);
-            
         }
     }
 
@@ -65,6 +58,6 @@ class LoginController extends VoyagerAuthController
 
     public function primeiroLogin($siape)
     {
-        return User::where('siape', $siape)->count() == 0;
+        return User::where('siape', $siape)->count() === 0;
     }
 }

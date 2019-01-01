@@ -21,6 +21,11 @@ class Pessoa extends Model
                     ->withPivot('data_relatorio', 'entregou_relatorio', 'declaracao');
         ;
     }
+    
+    public function usuario()
+    {
+        return $this->hasOne(User::class);
+    }
 
     public function getPessoaCoordenacaoAttribute()
     {

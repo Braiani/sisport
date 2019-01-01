@@ -63,6 +63,7 @@ class PortariasController extends VoyagerBaseController
 
     public function get_data(Request $request)
     {
+        $user = Auth::user();
         $offset = $request->get('offset');
         $limit = $request->get('limit');
         $search = $request->get('search') ? $request->get('search') : false;
@@ -74,9 +75,9 @@ class PortariasController extends VoyagerBaseController
 
         $query = new Portaria();
         
-        $restrito = (Auth::user()->isAdmin() or Auth::user()->isDirge());
+        $restrito = ($user->isAdmin() or $user->isDirge());
         
-        $restrito ?: $query = $query::restrito($restrito);
+        $restrito ?: $query = $query::restrito($restrito, $user);
 
         if ($search) {
             $query = $query->where(function ($query) use ($search) {
