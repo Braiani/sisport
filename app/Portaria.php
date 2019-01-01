@@ -23,9 +23,11 @@ class Portaria extends Model
         return $this->belongsTo(Status::class);
     }
     
-    public function scopeRestrito($query, $restrito)
+    public function scopeRestrito($query, $restrito, $user)
     {
-        return $query->where('restrito', $restrito);
+        return $query->where('restrito', $restrito)->orWhereIn('id', function ($query) use ($user) {
+            $query->select('portaria_id')->from('pessoas_portarias')->where('pessoa_id', $user->pessoa->id);
+        });
     }
 
     public function getPortariaDescricaoAttribute()
