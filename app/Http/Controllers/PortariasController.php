@@ -64,7 +64,16 @@ class PortariasController extends VoyagerBaseController
     
     public function download()
     {
-        return (new PortariaExport)->download('backup_'. date('d-m-Y_H_i') .'.xlsx');
+        if (Auth::user()->can('add', new Portaria)) {
+            return (new PortariaExport)->download('backup_'. date('d-m-Y_H_i') .'.xlsx');
+        } else {
+            return redirect()
+                ->route("voyager.portarias.index")
+                ->with([
+                        'message'    => "Você não tem permissão para fazer o Download do arquivo!",
+                        'alert-type' => 'error',
+                    ]);
+        }
     }
 
     public function get_data(Request $request)
