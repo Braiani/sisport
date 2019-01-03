@@ -9,6 +9,10 @@ class Portaria extends Model
     protected $guarded = [];
     
     protected $pessoas = true;
+    
+    protected $dates = [
+        'data_emissao', 'vencimento'
+    ];
 
     // protected $table = 'portarias';
 

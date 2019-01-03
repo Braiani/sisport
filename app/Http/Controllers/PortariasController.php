@@ -8,6 +8,7 @@ use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use TCG\Voyager\Models\DataRow;
 use App\Status;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\PortariaExport;
 
 class PortariasController extends VoyagerBaseController
 {
@@ -59,6 +60,20 @@ class PortariasController extends VoyagerBaseController
         $request->merge(['status_id' => $valorPadrao->id]);
         $statusDataRow = DataRow::where('data_type_id', $rows[0]->data_type_id)->where('field', 'status_id')->first();
         return $rows->push($statusDataRow);
+    }
+    
+    public function download()
+    {
+        if (Auth::user()->can('add', new Portaria)) {
+            return (new PortariaExport)->download('backup_'. date('d-m-Y_H_i') .'.xlsx');
+        } else {
+            return redirect()
+                ->route("voyager.portarias.index")
+                ->with([
+                        'message'    => "Você não tem permissão para fazer o Download do arquivo!",
+                        'alert-type' => 'error',
+                    ]);
+        }
     }
 
     public function get_data(Request $request)
