@@ -22,11 +22,11 @@
             </a>
         @endif
         @endcan
-        {{-- @can('add',app($dataType->model_name))
-            <a href="{{ route('portarias.download') }}" class="btn btn-info btn-add-new">
+        @can('add',app($dataType->model_name))
+            <a href="{{ route('voyager.portarias.download') }}" class="btn btn-info btn-add-new">
                 <i class="voyager-download"></i> <span>{{ __('sisport.download') }}</span>
             </a>
-        @endcan --}}
+        @endcan
         @include('voyager::multilingual.language-selector')
     </div>
 @stop
