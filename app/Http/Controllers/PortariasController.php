@@ -41,11 +41,11 @@ class PortariasController extends VoyagerBaseController
         $entregouRelatorio = $request->entregou_relatorio;
         $declaracao = $request->declaracao;
 
-        foreach ($pessoas as $key => $pessoa) {
+        foreach ($pessoas as $pessoa) {
             $sync_data[$pessoa] = [
-                'data_relatorio' => $dataRelatorio[$key],
-                'entregou_relatorio' => $entregouRelatorio[$key],
-                'declaracao' => $declaracao[$key]
+                'data_relatorio' => $dataRelatorio[$pessoa],
+                'entregou_relatorio' => $entregouRelatorio[$pessoa],
+                'declaracao' => $declaracao[$pessoa]
             ];
         }
         
