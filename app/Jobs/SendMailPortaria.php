@@ -33,7 +33,7 @@ class SendMailPortaria implements ShouldQueue
      */
     public function handle()
     {
-        $portaria = $this->portaria;
+        $portaria = $this->portaria->load('pessoas');
         $destinatarios = [];
         $assunto = 'Portaria ' . $portaria->port_num . ' - ' . $portaria->descricao;
 
@@ -42,7 +42,7 @@ class SendMailPortaria implements ShouldQueue
         }
 
         Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use ($destinatarios, $assunto, $portaria) {
-            $message->from('portaria.cg@ifms.edu.br', 'Portaria CG');
+            $message->from(config('definitions.email'), config('definitions.email'));
             $message->to($destinatarios);
             $message->subject($assunto);
             if ($portaria->arquivo !== null) {
