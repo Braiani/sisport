@@ -27,13 +27,13 @@ class DataTypesTableSeeder extends Seeder
                 'icon' => 'voyager-person',
                 'model_name' => 'TCG\\Voyager\\Models\\User',
                 'policy_name' => 'TCG\\Voyager\\Policies\\UserPolicy',
-                'controller' => 'UserTempController',
+                'controller' => 'App\\Http\\Controllers\\UserTempController',
                 'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 0,
-                'details' => '{"order_column":null,"order_display_column":null}',
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}',
                 'created_at' => '2018-02-24 20:08:07',
-                'updated_at' => '2018-08-30 02:13:12',
+                'updated_at' => '2019-07-24 03:48:26',
             ),
             1 => 
             array (
@@ -123,7 +123,7 @@ class DataTypesTableSeeder extends Seeder
                 'server_side' => 1,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":"nome"}',
                 'created_at' => '2018-02-24 21:01:34',
-                'updated_at' => '2019-01-01 15:16:26',
+                'updated_at' => '2019-01-23 11:40:01',
             ),
             6 => 
             array (
@@ -135,13 +135,13 @@ class DataTypesTableSeeder extends Seeder
                 'icon' => 'voyager-file-text',
                 'model_name' => 'App\\Portaria',
                 'policy_name' => '\\App\\Policies\\PortariaPolicy',
-                'controller' => 'PortariasController',
+                'controller' => 'App\\Http\\Controllers\\PortariasController',
                 'description' => NULL,
                 'generate_permissions' => 1,
                 'server_side' => 1,
-                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null}',
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}',
                 'created_at' => '2018-02-24 21:15:38',
-                'updated_at' => '2019-01-01 15:41:55',
+                'updated_at' => '2019-07-24 03:48:02',
             ),
         ));
         

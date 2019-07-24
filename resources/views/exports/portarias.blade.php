@@ -48,7 +48,7 @@
 			<td>{{ $pessoas[$key]->descricao }}</td>
 			<td>{{ $pessoa->nome }}</td>
 			<td>{{ $pessoa->pivot->data_relatorio != null ? $pessoa->pivot->data_relatorio->format('d/m/Y') : '' }}</td>
-			<td>{{ $pessoa->pivot->entregou_relatorio }}</td>
+			<td>{{ $pessoa->pivot->entregou_relatorio ? "Sim" : "Não" }}</td>
 			<td>{{ $pessoa->pivot->declaracao }}</td>
 		</tr>
 	@endforeach

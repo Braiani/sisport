@@ -19,7 +19,8 @@ class Portaria extends Model
     public function pessoas()
     {
         return $this->belongsToMany(Pessoa::class, 'pessoas_portarias')
-                    ->withPivot('data_relatorio', 'entregou_relatorio', 'declaracao');
+                    ->withPivot('data_relatorio', 'entregou_relatorio', 'declaracao')
+                    ->using(PessoasPortariaPivot::class);
     }
     
     public function status()
