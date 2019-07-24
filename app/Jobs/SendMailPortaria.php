@@ -44,6 +44,7 @@ class SendMailPortaria implements ShouldQueue
         Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use ($destinatarios, $assunto, $portaria) {
             $message->from(config('definitions.email'), config('definitions.email'));
             $message->to($destinatarios);
+            $message->cc('cogep.cg@ifms.edu.br'); // Temporary solution for sending a message copy
             $message->subject($assunto);
             if ($portaria->arquivo !== null) {
                 foreach (json_decode($portaria->arquivo) as $file) {
