@@ -32,19 +32,8 @@ function statusFormatter(value, row, index){
 
 function dateFormat(value, row, index) {
 	var date = new Date(value);
-	var dia = date.getDate() + 1;
-	var mes = date.getMonth() + 1;
-	var ano = date.getFullYear();
 
-	if (dia < 10) {
-		dia = '0' + dia;
-	}
-
-	if (mes < 10) {
-		mes = '0' + mes;
-	}
-
-	return dia + '/' + mes + '/' + ano;
+	return date.toLocaleDateString();
  }
 
 function membrosFormatter(value, row, index){
