@@ -3,8 +3,6 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Auth;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -28,6 +26,11 @@ class User extends \TCG\Voyager\Models\User
         'password', 'remember_token',
     ];
 
+    public function setSettingsAttribute($value)
+    {
+        $this->attributes['settings'] = $value ? $value->toJson() : null;
+    }
+
     public function isAdmin()
     {
         return $this->hasRole('Administrador');
@@ -37,7 +40,7 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasRole('DIRGE');
     }
-    
+
     public function pessoa()
     {
         return $this->belongsTo(Pessoa::class);

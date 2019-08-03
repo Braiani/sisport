@@ -29,7 +29,9 @@ class SendMailPortaria
     {
         if ($event->dataType->slug == "portarias") {
             $portaria = $event->data;
-            dispatch(new SendMailJob($portaria));
+            if ($portaria->send) {
+                dispatch(new SendMailJob($portaria));
+            }
         }
     }
 }
