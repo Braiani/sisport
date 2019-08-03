@@ -36,15 +36,16 @@ class SendMailPortaria implements ShouldQueue
         $portaria = $this->portaria->load('pessoas');
         $destinatarios = [];
         $assunto = 'Portaria ' . $portaria->port_num . ' - ' . $portaria->descricao;
+        $sendCopy = explode(';', setting('configuracoes.email_copy'));
 
         foreach ($portaria->pessoas as $destinatario) {
             array_push($destinatarios, $destinatario->email);
         }
 
-        Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use ($destinatarios, $assunto, $portaria) {
+        Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use ($destinatarios, $assunto, $portaria, $sendCopy) {
             $message->from(config('definitions.email'), config('definitions.email'));
             $message->to($destinatarios);
-            $message->cc('cogep.cg@ifms.edu.br'); // Temporary solution for sending a message copy
+            $message->cc($sendCopy);
             $message->subject($assunto);
             if ($portaria->arquivo !== null) {
                 foreach (json_decode($portaria->arquivo) as $file) {
