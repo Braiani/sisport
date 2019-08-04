@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Portaria;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SendMailPortaria implements ShouldQueue
@@ -36,7 +37,7 @@ class SendMailPortaria implements ShouldQueue
         $portaria = $this->portaria->load('pessoas');
         $destinatarios = [];
         $assunto = 'Portaria ' . $portaria->port_num . ' - ' . $portaria->descricao;
-        $sendCopy = explode(';', setting('configuracoes.email_copy'));
+        $sendCopy = setting('configuracoes.email_copy') =='' ? [] : explode(';', setting('configuracoes.email_copy'));
 
         foreach ($portaria->pessoas as $destinatario) {
             array_push($destinatarios, $destinatario->email);
@@ -45,8 +46,10 @@ class SendMailPortaria implements ShouldQueue
         Mail::send('emails.addPortaria', ['portaria' => $portaria], function ($message) use ($destinatarios, $assunto, $portaria, $sendCopy) {
             $message->from(config('definitions.email'), config('definitions.email'));
             $message->to($destinatarios);
-            $message->cc($sendCopy);
             $message->subject($assunto);
+            if (!empty($sendCopy)) {
+                $message->cc($sendCopy);
+            }
             if ($portaria->arquivo !== null) {
                 foreach (json_decode($portaria->arquivo) as $file) {
                     $message->attach(public_path() . '/storage/' . $file->download_link, [
