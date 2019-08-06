@@ -20,6 +20,12 @@ return [
             'texto-singular' => 'Foi emitida :count portaria.',
             'titulo-plural' => 'portarias cadastradas',
             'texto-plural' => 'Foram emitidas :count portarias.'
+        ],
+        'convites' => [
+            'titulo-singular' => 'convite encerra hoje',
+            'texto-singular' => ':count convite termina o prazo hoje.',
+            'titulo-plural' => 'convites encerram hoje',
+            'texto-plural' => ':count convites terminam o prazo hoje.'
         ]
     ]
 ];

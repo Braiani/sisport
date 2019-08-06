@@ -168,6 +168,7 @@ return [
             'App\\Widgets\\Pessoas',
             'App\\Widgets\\Portarias',
             'App\\Widgets\\MinhasPortarias',
+            'App\\Widgets\\Convites',
         ],
 
     ],
