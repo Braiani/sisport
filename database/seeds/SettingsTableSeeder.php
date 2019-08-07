@@ -127,6 +127,28 @@ class SettingsTableSeeder extends Seeder
                 'order' => 5,
                 'group' => 'Admin',
             ),
+            10 => 
+            array (
+                'id' => 12,
+                'key' => 'configuracoes.email_copy',
+            'display_name' => 'Enviar cópia automática para (separar com \';\' os e-mails):',
+                'value' => 'cogep.cg@ifms.edu.br;dirge.cg@ifms.edu.br',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 6,
+                'group' => 'Configurações',
+            ),
+            11 => 
+            array (
+                'id' => 13,
+                'key' => 'configuracoes.email_convite',
+            'display_name' => 'E-mail padrão envio de convites (defenir apenas um e-mail - pode ser lista);',
+                'value' => 'servidores.cg.lista@ifms.edu.br',
+                'details' => NULL,
+                'type' => 'text',
+                'order' => 7,
+                'group' => 'Configurações',
+            ),
         ));
         
         

@@ -656,6 +656,51 @@ class PermissionsTableSeeder extends Seeder
                 'updated_at' => '2018-02-27 02:42:48',
                 'permission_group_id' => NULL,
             ),
+            71 => 
+            array (
+                'id' => 72,
+                'key' => 'browse_convites',
+                'table_name' => 'convites',
+                'created_at' => '2019-08-04 14:07:14',
+                'updated_at' => '2019-08-04 14:07:14',
+                'permission_group_id' => NULL,
+            ),
+            72 => 
+            array (
+                'id' => 73,
+                'key' => 'read_convites',
+                'table_name' => 'convites',
+                'created_at' => '2019-08-04 14:07:14',
+                'updated_at' => '2019-08-04 14:07:14',
+                'permission_group_id' => NULL,
+            ),
+            73 => 
+            array (
+                'id' => 74,
+                'key' => 'edit_convites',
+                'table_name' => 'convites',
+                'created_at' => '2019-08-04 14:07:14',
+                'updated_at' => '2019-08-04 14:07:14',
+                'permission_group_id' => NULL,
+            ),
+            74 => 
+            array (
+                'id' => 75,
+                'key' => 'add_convites',
+                'table_name' => 'convites',
+                'created_at' => '2019-08-04 14:07:14',
+                'updated_at' => '2019-08-04 14:07:14',
+                'permission_group_id' => NULL,
+            ),
+            75 => 
+            array (
+                'id' => 76,
+                'key' => 'delete_convites',
+                'table_name' => 'convites',
+                'created_at' => '2019-08-04 14:07:14',
+                'updated_at' => '2019-08-04 14:07:14',
+                'permission_group_id' => NULL,
+            ),
         ));
         
         

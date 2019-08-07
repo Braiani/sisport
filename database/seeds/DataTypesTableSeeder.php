@@ -25,7 +25,7 @@ class DataTypesTableSeeder extends Seeder
                 'display_name_singular' => 'User',
                 'display_name_plural' => 'Users',
                 'icon' => 'voyager-person',
-                'model_name' => 'TCG\\Voyager\\Models\\User',
+                'model_name' => 'App\\User',
                 'policy_name' => 'TCG\\Voyager\\Policies\\UserPolicy',
                 'controller' => 'App\\Http\\Controllers\\UserTempController',
                 'description' => NULL,
@@ -33,7 +33,7 @@ class DataTypesTableSeeder extends Seeder
                 'server_side' => 0,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}',
                 'created_at' => '2018-02-24 20:08:07',
-                'updated_at' => '2019-07-24 03:48:26',
+                'updated_at' => '2019-08-03 14:30:54',
             ),
             1 => 
             array (
@@ -141,7 +141,25 @@ class DataTypesTableSeeder extends Seeder
                 'server_side' => 1,
                 'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}',
                 'created_at' => '2018-02-24 21:15:38',
-                'updated_at' => '2019-07-24 03:48:02',
+                'updated_at' => '2019-08-07 08:04:34',
+            ),
+            7 => 
+            array (
+                'id' => 12,
+                'name' => 'convites',
+                'slug' => 'convites',
+                'display_name_singular' => 'Convite',
+                'display_name_plural' => 'Convites',
+                'icon' => 'voyager-mail',
+                'model_name' => 'App\\Convite',
+                'policy_name' => NULL,
+                'controller' => 'App\\Http\\Controllers\\ConviteController',
+                'description' => NULL,
+                'generate_permissions' => 1,
+                'server_side' => 1,
+                'details' => '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":"titulo","scope":null}',
+                'created_at' => '2019-08-04 14:07:14',
+                'updated_at' => '2019-08-05 22:54:55',
             ),
         ));
         
