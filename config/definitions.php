@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'email' => env('MAIL_EMAIL', 'portaria.cg@ifms.edu.br'),
-    'name' => env('MAIL_NAME','Portaria CG')
+    'email' => env('MAIL_FROM_ADDRESS', 'from@example.com'),
+    'name' => env('MAIL_FROM_NAME','Example')
 ];
