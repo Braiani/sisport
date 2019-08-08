@@ -115,9 +115,7 @@
                                             <br/>
                                         @endforeach
                                     @else
-                                        <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($row->field) ?: '' }}">
-                                            {{ __('voyager::generic.download') }}
-                                        </a>
+                                        <p><i class="voyager-file-text"></i> Sem anexos</p>
                                     @endif
                                 @else
                                     @include('voyager::multilingual.input-hidden-bread-read')

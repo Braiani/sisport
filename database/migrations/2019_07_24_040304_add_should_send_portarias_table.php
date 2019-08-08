@@ -14,7 +14,7 @@ class AddShouldSendPortariasTable extends Migration
     public function up()
     {
         Schema::table('portarias', function (Blueprint $table) {
-            //
+            $table->boolean('send')->default(true)->after('restrito');
         });
     }
 
@@ -26,7 +26,7 @@ class AddShouldSendPortariasTable extends Migration
     public function down()
     {
         Schema::table('portarias', function (Blueprint $table) {
-            //
+            $table->dropColumn('send');
         });
     }
 }

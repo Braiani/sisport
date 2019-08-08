@@ -151,24 +151,54 @@
                     @if(empty($selected_values))
                         <p>No results</p>
                     @else
-                        @php
-                            $count = 1;
-                        @endphp
-                        @foreach($selected_values as $selected_value)
-                            @if ($dataType->slug == 'portarias')
-                                @if ($count == 1)
-                                    <div class="row">
-                                        @endif
-                                        <div class="form-group col-md-3">
+                        <div class="row" style="margin-left: 0">
+                            <div class="col-12">
+                            @foreach($selected_values as $selected_value)
+                                @if ($dataType->slug == 'portarias')
+                                    <div class="form-group col-sm-3">
+                                        <div class="row">
+                                            <i class="voyager-person"></i>
+                                            <a href="{{ route('voyager.pessoas.show', $selected_value->id) }}">{{ $selected_value->nome }}</a>
+                                        </div>
+                                        <div class="row">
+                                            <strong>Data relatório:</strong>
+                                            {{
+                                                isset($selected_value->pivot->data_relatorio) ?
+                                                    $selected_value->pivot->data_relatorio->format('d/m/Y') :
+                                                    "Sem informações"
+                                            }}
+                                        </div>
+                                        <div class="row">
+                                            <strong>Entregou relatório?</strong>
+                                            {{ isset($selected_value->pivot->entregou_relatorio) ? $selected_value->pivot->entregou_relatorio : 'Sem informações' }}
+                                        </div>
+                                        <div class="row">
+                                            <strong>Declaração emitida?</strong>
+                                            {{ isset($selected_value->pivot->declaracao) ? $selected_value->pivot->declaracao : 'Sem informações' }}
+                                        </div>
+                                    </div>
+                                @elseif($dataType->slug == 'pessoas')
+                                    @can('visibilidade', $selected_value)
+                                        @php
+                                            $status = $selected_value->status;
+                                        @endphp
+                                        <div class="form-group col-md-4 @if($status->padrao == 2) bg-danger @endif">
                                             <div class="row">
-                                                <i class="voyager-person"></i> <a
-                                                        href="{{ route('voyager.pessoas.show', $selected_value->id) }}">{{ $selected_value->nome }}</a>
+                                                <i class="voyager-file-text"></i>
+                                                <a href="{{ route('voyager.portarias.show', $selected_value->id) }}">
+                                                    {{ $selected_value->port_num }}
+                                                    - {{ $selected_value->descricao }}
+                                                </a>
+                                            </div>
+                                            <div class="row">
+                                                <strong>Status da portaria:</strong>
+                                                {{ $status->descricao }}
                                             </div>
                                             <div class="row">
                                                 <strong>Data relatório:</strong>
                                                 {{
                                                     isset($selected_value->pivot->data_relatorio) ?
-                                                        date('d/m/Y', strtotime($selected_value->pivot->data_relatorio)) :
+                                                        $selected_value->pivot->data_relatorio->format('d/m/Y') :
                                                         "Sem informações"
                                                 }}
                                             </div>
@@ -181,63 +211,13 @@
                                                 {{ isset($selected_value->pivot->declaracao) ? $selected_value->pivot->declaracao : 'Sem informações' }}
                                             </div>
                                         </div>
-                                        @if ($count == 4)
-                                    </div>
-                                    @php
-                                        $count = 0;
-                                    @endphp
+                                    @endcan
+                                @else
+                                    <li>{{ $selected_value }}</li>
                                 @endif
-                            @elseif($dataType->slug == 'pessoas')
-                                @can('visibilidade', $selected_value)
-                                    @php
-                                        $status = $selected_value->status;
-                                    @endphp
-                                    @if ($count == 1)
-                                        <div class="row" style="margin-left: 0px;">
-                                            @endif
-                                            <div class="form-group col-md-4 @if($status->padrao == 2) bg-danger @endif">
-                                                <div class="row">
-                                                    <i class="voyager-file-text"></i>
-                                                    <a href="{{ route('voyager.portarias.show', $selected_value->id) }}">
-                                                        {{ $selected_value->port_num }}
-                                                        - {{ $selected_value->descricao }}
-                                                    </a>
-                                                </div>
-                                                <div class="row">
-                                                    <strong>Status da portaria:</strong>
-                                                    {{ $status->descricao }}
-                                                </div>
-                                                <div class="row">
-                                                    <strong>Data relatório:</strong>
-                                                    {{
-                                                        isset($selected_value->pivot->data_relatorio) ?
-                                                            date('d/m/Y', strtotime($selected_value->pivot->data_relatorio)) :
-                                                            "Sem informações"
-                                                    }}
-                                                </div>
-                                                <div class="row">
-                                                    <strong>Entregou relatório?</strong>
-                                                    {{ isset($selected_value->pivot->entregou_relatorio) ? $selected_value->pivot->entregou_relatorio : 'Sem informações' }}
-                                                </div>
-                                                <div class="row">
-                                                    <strong>Declaração emitida?</strong>
-                                                    {{ isset($selected_value->pivot->declaracao) ? $selected_value->pivot->declaracao : 'Sem informações' }}
-                                                </div>
-                                            </div>
-                                            @if ($count == 3)
-                                        </div>
-                                        @php
-                                            $count = 0;
-                                        @endphp
-                                    @endif
-                                @endcan
-                            @else
-                                <li>{{ $selected_value }}</li>
-                            @endif
-                            @php
-                                $count ++;
-                            @endphp
-                        @endforeach
+                            @endforeach
+                            </div>
+                        </div>
                     @endif
                 @endif
 
@@ -293,7 +273,7 @@
                                             <input id="dt_rel_{{$pessoasSelecionada->id}}" type="date"
                                                    name="data_relatorio[{{$pessoasSelecionada->id}}]"
                                                    class="form-control dt_relatorio"
-                                                   value="{{ $pessoasSelecionada->pivot->data_relatorio }}">
+                                                   value="{{ $pessoasSelecionada->pivot->data_relatorio ? $pessoasSelecionada->pivot->data_relatorio->format('Y-m-d') : ''  }}">
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <label>Entregou o relatório?</label>
