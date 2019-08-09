@@ -1,6 +1,7 @@
 <?php
 
 use Monolog\Handler\StreamHandler;
+use App\Services\Log\LogTelegram;
 
 return [
 
@@ -35,7 +36,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['daily', 'telegram'],
         ],
 
         'single' => [
@@ -49,6 +50,16 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
             'days' => 7,
+		],
+		
+		'telegram' => [
+            'driver' => 'monolog',
+            'level' => 'debug',
+            'handler' => LogTelegram::class,
+            'with' => [
+                'channel' => env('CHAT_ID'),
+                'apiKey' => env('BOT_ID'),
+            ],
         ],
 
         'slack' => [
