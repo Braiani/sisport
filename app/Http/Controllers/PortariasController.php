@@ -34,7 +34,13 @@ class PortariasController extends VoyagerBaseController
         }
         
         $portaria = parent::insertUpdateData($request, $slug, $rows, $data);
+
+        !isset($request->portaria_belongstomany_pessoa_relationship) ?: $this->syncPessoaPortaria($request, $portaria);
         
+        return $portaria;
+    }
+
+    private function syncPessoaPortaria(Request $request, Portaria $portaria){
         $sync_data = [];
         $pessoas = $request->portaria_belongstomany_pessoa_relationship;
         $dataRelatorio = $request->data_relatorio;
@@ -48,10 +54,8 @@ class PortariasController extends VoyagerBaseController
                 'declaracao' => $declaracao[$pessoa]
             ];
         }
-        
+
         $portaria->pessoas()->sync($sync_data);
-        
-        return $portaria;
     }
     
     public function defaultStatus($request, $rows)

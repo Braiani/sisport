@@ -36,7 +36,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily', 'telegram'],
+            'channels' => config('app.env') == 'production' ? ['daily', 'telegram'] : ['daily'],
         ],
 
         'single' => [

@@ -153,8 +153,8 @@
                     @else
                         <div class="row" style="margin-left: 0">
                             <div class="col-12">
-                            @foreach($selected_values as $selected_value)
                                 @if ($dataType->slug == 'portarias')
+                                    @foreach($selected_values as $selected_value)
                                     <div class="form-group col-sm-3">
                                         <div class="row">
                                             <i class="voyager-person"></i>
@@ -177,45 +177,9 @@
                                             {{ isset($selected_value->pivot->declaracao) ? $selected_value->pivot->declaracao : 'Sem informações' }}
                                         </div>
                                     </div>
-                                @elseif($dataType->slug == 'pessoas')
-                                    @can('visibilidade', $selected_value)
-                                        @php
-                                            $status = $selected_value->status;
-                                        @endphp
-                                        <div class="form-group col-md-4 @if($status->padrao == 2) bg-danger @endif">
-                                            <div class="row">
-                                                <i class="voyager-file-text"></i>
-                                                <a href="{{ route('voyager.portarias.show', $selected_value->id) }}">
-                                                    {{ $selected_value->port_num }}
-                                                    - {{ $selected_value->descricao }}
-                                                </a>
-                                            </div>
-                                            <div class="row">
-                                                <strong>Status da portaria:</strong>
-                                                {{ $status->descricao }}
-                                            </div>
-                                            <div class="row">
-                                                <strong>Data relatório:</strong>
-                                                {{
-                                                    isset($selected_value->pivot->data_relatorio) ?
-                                                        $selected_value->pivot->data_relatorio->format('d/m/Y') :
-                                                        "Sem informações"
-                                                }}
-                                            </div>
-                                            <div class="row">
-                                                <strong>Entregou relatório?</strong>
-                                                {{ isset($selected_value->pivot->entregou_relatorio) ? $selected_value->pivot->entregou_relatorio : 'Sem informações' }}
-                                            </div>
-                                            <div class="row">
-                                                <strong>Declaração emitida?</strong>
-                                                {{ isset($selected_value->pivot->declaracao) ? $selected_value->pivot->declaracao : 'Sem informações' }}
-                                            </div>
-                                        </div>
-                                    @endcan
-                                @else
-                                    <li>{{ $selected_value }}</li>
+                                    @endforeach
                                 @endif
-                            @endforeach
+                                @includeWhen($dataType->slug == 'pessoas', "layouts.pessoas.portarias")
                             </div>
                         </div>
                     @endif
