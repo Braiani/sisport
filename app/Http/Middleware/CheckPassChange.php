@@ -16,7 +16,7 @@ class CheckPassChange
      */
     public function handle($request, Closure $next)
     {
-        if ((!$request->is('admin/users/*') and !$request->is('admin/logout')) and Auth::check()) {
+        if ((!$request->is('admin/users/*') and !$request->is('admin/logout') and !$request->is('admin/voyager-assets')) and Auth::check()) {
             $user = $request->user();
             return $user->alter_pass ? $next($request) : redirect()->route('voyager.users.edit', $user->id);
         }
