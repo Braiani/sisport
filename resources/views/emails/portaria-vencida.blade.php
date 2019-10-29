@@ -6,21 +6,17 @@
 </head>
 <body>
 <img src="{{ $message->embed(public_path() . '/img/email-head.png') }}" width="420" height="61"><br>
-<p>Prezados,</p>
-<p>Informamos que a Portaria nº {{ $portaria->port_num }} - {{ $portaria->descricao }} encontra-se vencida.</p>
+<p>Prezado Servidor,</p>
+<p>Com intuito de facilitar seu controle sobre as participações em nossas comissões, informamos que a Portaria nº {{ $portaria->port_num }} - {{ $portaria->descricao }}
+    encontra-se <b>VENCIDA</b>.</p>
 
-<p>Caso ainda não tenha enviado os relatórios para Presidente/Coordenador e/ou para a Direção Geral, favor fazê-lo o quanto antes.</p>
+<p>Lembramos que, caso ainda não tenha enviado seu relatório, é importante que encaminhe para o Presidente/Coordenador da comissão e/ou para a Direção Geral de nosso campus.</p>
 
-<p>
-    Informamos, ainda, que os modelos de relatórios encontram-se no suap e deverão ser encaminhados à Dirge pelo Presidente/Coordenador
-    da Comissão por meio do <b>Processo eletrônico que consta na referida Portaria.</b> Neste processo eletrônico, deverá constar o relatório do
-    Presidente/Coordenador , bem como os relatórios individuais dos demais membros.
-</p>
+<p>Na hipótese de já ter enviado, agradecemos a colaboração e pedimos que desconsidere este lembrete.</p>
 
-<p>Para acessar o modelo de relatório, acesse o <u>SUAP > ADMINISTRAÇÃO > Documentos Eletrônicos > Documentos > Adicionar Documento de Texto</u></p>
-<p>Tipo de Documento: <b>Relatório.</b></p>
-<p>Modelo de Documento: <b>Relatório Final das Atividades Desenvolvidas pela Comissão (preenchido pelo Presidente/Coordenador)</b></p>
-<p>Modelo de Documento: <b>Relatório Individual de Atividades Desenvolvidas em Comissão (preenchido pelos demais membros).</b></p>
+<p>As declarações, de efetiva participação em comissões, serão emitidas após análise dos relatórios e contribuirão pontuando em diversos editais institucionais.</p>
+
+<p><u>Essa é uma mensagem automática.</u></p>
 
 <p>At.te,</p>
 
