@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Jobs\SendPasswordResetJob;
 use Illuminate\Notifications\Notifiable;
 
 class User extends \TCG\Voyager\Models\User
@@ -44,5 +45,10 @@ class User extends \TCG\Voyager\Models\User
     public function pessoa()
     {
         return $this->belongsTo(Pessoa::class);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        dispatch(new SendPasswordResetJob($token, $this));
     }
 }
