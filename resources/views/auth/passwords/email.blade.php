@@ -13,9 +13,9 @@
             @csrf
 
             <div class="form-group form-group-default" id="emailGroup">
-                <label>{{ __('voyager::generic.email') }}</label>
+                <label>{{ __('SIAPE') }}</label>
                 <div class="controls">
-                    <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="{{ __('voyager::generic.email') }}" class="form-control" required>
+                    <input type="text" name="siape" id="siape" value="{{ old('siape') }}" placeholder="{{ __('SIAPE') }}" class="form-control" required>
                 </div>
             </div>
 
