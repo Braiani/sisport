@@ -14,6 +14,8 @@
 
 <p>Obs.: Esse link tem validade de 60 minutos. Caso passe desse tempo, favor solicitar nova recuperação de senha.</p>
 
+<p><u>Caso não tenha solicitado nenhuma recuperação de senha, não é preciso fazer nada! Sua senha permanecerá a mesma.</u></p>
+
 <p><u>Essa é uma mensagem automática.</u></p>
 
 <p>At.te,</p>
