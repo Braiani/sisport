@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Listeners\SendPasswordChangedListener;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -18,6 +20,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'TCG\Voyager\Events\BreadDataChanged' => [
             'App\Listeners\AlterPassUser',
+        ],
+        PasswordReset::class => [
+            SendPasswordChangedListener::class
         ],
     ];
 
