@@ -26,9 +26,11 @@ class MinhasPortarias extends AbstractWidget
         $user = Auth::user()->pessoa;
         $count = Portaria::whereHas('pessoas', function ($query) use ($user) {
             $query->where('pessoa_id', $user->id);
+        })->whereHas('status', function ($q) {
+            $q->padraoCadastro();
         })->count();
         $link = route('voyager.pessoas.show', $user->id);
-        
+
         if ($count <= 1) {
             $titulo = __('sisport.widgets.minhasPortarias.titulo-singular');
             $texto = trans_choice('sisport.widgets.minhasPortarias.texto-singular', $count);
