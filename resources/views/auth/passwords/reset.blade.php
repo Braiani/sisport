@@ -8,9 +8,10 @@
         <input type="hidden" name="token" value="{{ $token }}">
 
         <div class="form-group form-group-default" id="emailGroup">
-            <label>{{ __('voyager::generic.email') }}</label>
+            <label>{{ __('siape') }}</label>
             <div class="controls">
-                <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="{{ __('voyager::generic.email') }}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required>
+                <input type="text" name="siape" id="siape" value="{{ old('siape') }}" placeholder="{{ __('siape') }}"
+                       class="form-control{{ $errors->has('siape') ? ' is-invalid' : '' }}" required>
             </div>
         </div>
 
