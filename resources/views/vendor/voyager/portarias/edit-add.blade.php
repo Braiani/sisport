@@ -66,7 +66,7 @@
                                         <label for="name">{{ $row->display_name }}</label>
                                         @include('voyager::multilingual.input-hidden-bread-edit-add')
                                         @if($row->type == 'relationship')
-                                            @include('voyager::formfields.relationship', ['options' => $row->details])      
+                                            @include('voyager::formfields.relationship', ['options' => $row->details])
                                         @else
                                             {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
                                         @endif
@@ -172,7 +172,7 @@
             $('.form-group').on('click', '.remove-single-file', deleteHandler('a', false));
 
             $('#confirm_delete').on('click', function(){
-                $.post('{{ route('voyager.media.remove') }}', params, function (response) {
+                $.post('{{ route('voyager.media.delete') }}', params, function (response) {
                     if ( response
                         && response.data
                         && response.data.status
