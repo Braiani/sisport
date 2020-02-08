@@ -96,7 +96,7 @@
                 <div class="row flexRow">
                     @foreach($selected_values->sortByDesc('data_emissao') as $selected_value)
                         @can('visibilidade', $selected_value)
-                            <div class="form-group col-md-4 @if($selected_value->status->padrao == 2) bg-danger @endif">
+                            <div class="form-group col-md-4 @if($selected_value->status->padrao === 1) bg-success @endif">
                                 <div class="row">
                                     <i class="voyager-file-text"></i>
                                     <a href="{{ route('voyager.portarias.show', $selected_value->id) }}">
