@@ -1,22 +1,22 @@
 @extends('layouts.login.master')
 
 @section('content')
-    <p>{{ __('voyager::login.signin_below') }}</p>
+    <p>Faça seu login</p>
 
     <form action="{{ route('voyager.login') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group form-group-default" id="emailGroup">
-            <label>{{ __('voyager::generic.email') }}</label>
+            <label>E-mail ou SIAPE</label>
             <div class="controls">
-                <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="{{ __('voyager::generic.email') }}" class="form-control" required>
+                <input type="text" name="email" id="email" value="{{ old('email') }}" placeholder="E-mail ou SIAPE" class="form-control" required>
                 {{-- <input type="hidden" name="siape"> --}}
             </div>
         </div>
 
         <div class="form-group form-group-default" id="passwordGroup">
-            <label>{{ __('voyager::generic.password') }}</label>
+            <label>Senha</label>
             <div class="controls">
-                <input type="password" name="password" placeholder="{{ __('voyager::generic.password') }}" class="form-control" required>
+                <input type="password" name="password" placeholder="Senha" class="form-control" required>
             </div>
         </div>
 
@@ -25,8 +25,8 @@
         </p>
 
         <button type="submit" class="btn btn-block login-button">
-            <span class="signingin hidden"><span class="voyager-refresh"></span> {{ __('voyager::login.loggingin') }}...</span>
-            <span class="signin">{{ __('voyager::generic.login') }}</span>
+            <span class="signingin hidden"><span class="voyager-refresh"></span> Entrando...</span>
+            <span class="signin">Entrar</span>
         </button>
 
     </form>
