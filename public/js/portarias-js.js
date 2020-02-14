@@ -31,6 +31,9 @@ function statusFormatter(value, row, index){
 }
 
 function dateFormat(value, row, index) {
+	if (value === null) {
+		return '-';
+	}
 	var date = new Date(value);
 
 	return date.toLocaleDateString();

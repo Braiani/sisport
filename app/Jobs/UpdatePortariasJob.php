@@ -57,15 +57,21 @@ class UpdatePortariasJob implements ShouldQueue
         $destinatarios = [];
         $assunto = "Portaria {$portaria->port_num} - {$portaria->descricao} - Vencida";
 
+        if (is_null($portaria->pessoas)) {
+            return;
+        }
         foreach ($portaria->pessoas as $destinatario) {
-            array_push($destinatarios, $destinatario->email);
+            $email = $destinatario->email ?? null;
+            if (! is_null($email) && $destinatario->ativo){
+                array_push($destinatarios, $email);
+            }
         }
 
         Mail::send('emails.portaria-vencida', ['portaria' => $portaria], function ($message) use ($destinatarios, $assunto, $portaria) {
             $message->from(config('definitions.email'), config('definitions.email'));
             $message->to($destinatarios);
             $message->subject($assunto);
-            if ($portaria->arquivo !== null) {
+            if (! is_null($portaria->arquivo)) {
                 foreach (json_decode($portaria->arquivo) as $file) {
                     $message->attach(public_path() . '/storage/' . $file->download_link, [
                         'as' => $file->original_name
