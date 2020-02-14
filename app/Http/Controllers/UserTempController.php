@@ -35,7 +35,7 @@ class UserTempController extends VoyagerUserController
     {
         $user = User::findOrFail($id);
         $request->merge([
-            'alter_pass' => $request->alter_pass ? true : false,
+            'alter_pass' => $request->alter_pass ? false : true,
             'siape' => $user->siape,
             'pessoa_id' => $user->pessoa_id,
             'role_id' => $user->role_id
