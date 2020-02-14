@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendNewUserMailJob;
 use App\Pessoa;
 use App\User;
 use Illuminate\Http\Request;
@@ -28,7 +29,13 @@ class UserTempController extends VoyagerUserController
             'alter_pass' => !$alterPass,
             'pessoa_id' => $request->person,
         ]);
-        return parent::store($request);
+        $return = parent::store($request);
+
+        $user = User::where('pessoa_id', $request->pessoa_id)->first();
+        $password = $request->password;
+        dispatch(new SendNewUserMailJob($user, $password));
+
+        return $return;
     }
 
 
