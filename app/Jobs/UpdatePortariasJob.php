@@ -62,7 +62,7 @@ class UpdatePortariasJob implements ShouldQueue
         }
         foreach ($portaria->pessoas as $destinatario) {
             $email = $destinatario->email ?? null;
-            if (! is_null($email)){
+            if (! is_null($email) && $destinatario->ativo){
                 array_push($destinatarios, $email);
             }
         }
