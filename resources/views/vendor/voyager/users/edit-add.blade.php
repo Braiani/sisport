@@ -84,7 +84,7 @@
                                             <label for="alter_pass">Solicitar alteraçao da senha?</label>
                                         </div>
                                         <div class="form-group">
-                                            <input type="checkbox" name="alter_pass" class="toggleswitch form-control"
+                                            <input type="checkbox" name="alter_pass" value="true" class="toggleswitch form-control"
                                                    data-on="Sim" checked data-off="Nao">
                                         </div>
                                     </div>

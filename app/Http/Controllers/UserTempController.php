@@ -23,8 +23,9 @@ class UserTempController extends VoyagerUserController
 
     public function store(Request $request)
     {
+        $alterPass = $request->alter_pass ?? false;
         $request->merge([
-            'alter_pass' => $request->alter_pass ? true : false,
+            'alter_pass' => !$alterPass,
             'pessoa_id' => $request->person,
         ]);
         return parent::store($request);
@@ -34,8 +35,9 @@ class UserTempController extends VoyagerUserController
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+        $alterPass = $request->alter_pass ?? false;
         $request->merge([
-            'alter_pass' => $request->alter_pass ? false : true,
+            'alter_pass' =>  !$alterPass,
             'siape' => $user->siape,
             'pessoa_id' => $user->pessoa_id,
             'role_id' => $user->role_id
